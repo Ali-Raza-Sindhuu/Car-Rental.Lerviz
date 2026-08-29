@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------
+   Tailwind v4 theme tokens (replaces tailwind.config.js).
+   Anything defined here is available as a utility class:
+   --color-accent -> bg-accent / text-accent / border-accent
+   --font-display -> font-display
+   ------------------------------------------------------------ */
+@theme {
+  --color-ink: #000000;
+  --color-panel: #0f0f0f;
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-paper: #ffffff;
+  --color-mist: #d9d9d9;
+  --color-accent: #db0404;
+  --color-accent-soft: #ffebee;
+
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+
+  --tracking-wide2: 0.02em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #db0404;
+  color: #fff;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center px-8 py-[18px] rounded-md bg-accent text-white text-[15px] font-medium tracking-wide2 uppercase transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98];
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center px-8 py-[18px] rounded-md border border-white/70 text-white text-[15px] font-medium tracking-wide2 uppercase backdrop-blur-sm transition-colors duration-300 hover:bg-white hover:text-ink;
+}
+
+.btn-light {
+  @apply inline-flex items-center justify-center px-8 py-[18px] rounded-md bg-white text-ink text-[15px] font-medium tracking-wide2 uppercase transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98];
+}
+
+.eyebrow {
+  @apply text-mist tracking-wide2;
+}
+
+.card-border {
+  @apply border border-white/10;
+}
