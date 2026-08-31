@@ -1,72 +1,76 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-/* ------------------------------------------------------------
-   Tailwind v4 theme tokens (replaces tailwind.config.js).
-   Anything defined here is available as a utility class:
-   --color-accent -> bg-accent / text-accent / border-accent
-   --font-display -> font-display
-   ------------------------------------------------------------ */
+/* Google Fonts — Orbitron (display) + Manrope (body) */
+
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — registered as Tailwind theme variables.             */
+/* Any var below is usable as a utility: font-display, bg-card,        */
+/* text-brand-gray, border-border-subtle, text-brand-red, etc.         */
+/* ------------------------------------------------------------------ */
 @theme {
-  --color-ink: #000000;
-  --color-panel: #0f0f0f;
-  --color-line: rgba(255, 255, 255, 0.1);
-  --color-paper: #ffffff;
-  --color-mist: #d9d9d9;
-  --color-accent: #db0404;
-  --color-accent-soft: #ffebee;
+  /* Typography */
+  --font-display: "Orbitron", sans-serif;
+  --font-sans: "Manrope", "Inter", sans-serif;
 
-  --font-display: 'Orbitron', sans-serif;
-  --font-body: 'Manrope', sans-serif;
+  /* Brand colors */
+  --color-brand-black: #000000;
+  --color-brand-white: #ffffff;
+  --color-brand-gray: #d9d9d9;
+  --color-brand-red: #7d0000;
+  --color-brand-red-bright: #db0404;
 
-  --tracking-wide2: 0.02em;
+  /* Surfaces */
+  --color-card: #0f0f0f;
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
 }
 
-* {
-  box-sizing: border-box;
-}
+/* ------------------------------------------------------------------ */
+/* Global base styles                                                  */
+/* ------------------------------------------------------------------ */
+@layer base {
+  body {
+    background-color: var(--color-brand-black);
+    color: var(--color-brand-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
 
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-}
+  h1 {
+    font-weight: 900;
+  }
 
-::selection {
-  background: #db0404;
-  color: #fff;
-}
+  h2 {
+    font-weight: 700;
+  }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  h3,
+  h4 {
+    font-weight: 600;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-.btn-primary {
-  @apply inline-flex items-center justify-center px-8 py-[18px] rounded-md bg-accent text-white text-[15px] font-medium tracking-wide2 uppercase transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98];
+.animate-ticker {
+  animation: ticker 25s linear infinite;
 }
 
-.btn-outline {
-  @apply inline-flex items-center justify-center px-8 py-[18px] rounded-md border border-white/70 text-white text-[15px] font-medium tracking-wide2 uppercase backdrop-blur-sm transition-colors duration-300 hover:bg-white hover:text-ink;
-}
-
-.btn-light {
-  @apply inline-flex items-center justify-center px-8 py-[18px] rounded-md bg-white text-ink text-[15px] font-medium tracking-wide2 uppercase transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98];
-}
-
-.eyebrow {
-  @apply text-mist tracking-wide2;
-}
-
-.card-border {
-  @apply border border-white/10;
-}

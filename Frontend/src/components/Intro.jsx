@@ -1,43 +1,94 @@
-import { Reveal, RevealWords } from './Reveal'
-import Counter from './Counter'
-import { stats } from '../data/dummyData'
+import { useEffect, useRef, useState } from "react";
 
-export default function Intro() {
+
+/** Counts up from 0 to a target number once the element scrolls into view. */
+function useCountUp(target, duration = 1500) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const hasRun = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasRun.current) {
+          hasRun.current = true;
+          const start = performance.now();
+
+          const tick = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            setCount(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+            else setCount(target);
+          };
+
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return [count, ref];
+}
+
+function StatCounter({ prefix = "", value, suffix, label }) {
+  const [count, ref] = useCountUp(value);
+
   return (
-    <section className="py-24 px-5">
-      <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-        <img
-          src="https://placehold.co/64x64/141414/db0404?text=L"
-          alt="Levrix mark"
-          className="w-16 h-16 rounded-full mb-8"
-        />
+    <div ref={ref} className="flex flex-col items-center gap-3 text-center">
+      <div className="flex items-center justify-center gap-1 font-['Orbitron',_sans-serif] font-medium text-4xl md:text-5xl text-white">
+        {prefix && <span>{prefix}</span>}
+        <span>{count}</span>
+        <span className="text-[#db0404]">{suffix}</span>
+      </div>
+      <p className="text-[#d9d9d9] text-sm md:text-base">{label}</p>
+    </div>
+  );
+}
 
-        <RevealWords
-          as="h2"
-          text="we don't just sell cars we craft experiences"
-          className="font-display text-2xl md:text-4xl font-semibold tracking-wide2 mb-6"
-        />
+function Intro() {
+  return (
+    <section className="relative w-full bg-black px-6 py-20 md:py-28">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 md:gap-14">
+        {/* Rotating icon/graphic */}
+        <div className="h-24 w-24 md:h-32 md:w-32 ">
+          <img
+            src="https://framerusercontent.com/images/b2xkpGrYvkjqvkVsb2OlLXIKebg.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover rounded-full"
+          />
+        </div>
 
-        <Reveal delay={0.1}>
-          <p className="text-mist text-base md:text-lg max-w-xl">
+        {/* Heading + paragraph */}
+        <div className="flex flex-col items-center gap-5 text-center">
+          <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-3xl">
+            we don&rsquo;t just sell cars we craft experiences
+          </h2>
+          <p className="text-[#d9d9d9] text-base md:text-lg max-w-xl">
             At Levrix, we believe a car is more than just a way to get from
-            one place to another — it's a reflection of who you are.
+            one place to another—it&rsquo;s a reflection of who you are.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.2} className="w-full mt-14">
-          <div className="grid grid-cols-3 gap-6 divide-x divide-line">
-            {stats.map((s, i) => (
-              <div key={i} className="flex flex-col items-center gap-2 px-2">
-                <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} />
-                <p className="text-mist text-sm md:text-base text-center">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
+        {/* Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 md:gap-10 w-full pt-4">
+          <StatCounter prefix="$" value={120} suffix="M+" label="Luxury Cars Sales" />
+          <StatCounter value={10} suffix="+" label="Years of Experience" />
+          <StatCounter value={95} suffix="%" label="Client Satisfaction" />
+        </div>
       </div>
     </section>
-  )
+  );
 }
+
+export default Intro;
