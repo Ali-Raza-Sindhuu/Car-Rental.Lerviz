@@ -61,7 +61,7 @@
     color: inherit;
   }
 }
-@keyframes ticker {
+/* @keyframes ticker {
   from {
     transform: translateX(0);
   }
@@ -72,5 +72,5 @@
 
 .animate-ticker {
   animation: ticker 25s linear infinite;
-}
+} */
 
