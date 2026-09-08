@@ -29,6 +29,10 @@
 /* Global base styles                                                  */
 /* ------------------------------------------------------------------ */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-brand-black);
     color: var(--color-brand-white);
@@ -61,16 +65,16 @@
     color: inherit;
   }
 }
-/* @keyframes ticker {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+
+/* ------------------------------------------------------------------ */
+/* Partner logos ticker — CSS-only continuous scroll                   */
+/* ------------------------------------------------------------------ */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-ticker {
-  animation: ticker 25s linear infinite;
-} */
+  animation: ticker 30s linear infinite;
+}
 

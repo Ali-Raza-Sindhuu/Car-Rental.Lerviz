@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Star } from "lucide-react";
 
 const testimonials = [
@@ -52,7 +52,7 @@ const wordVariants = {
   visible: {
     opacity: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.35, ease: "easeOut" },
   },
 };
 
@@ -64,7 +64,8 @@ function AnimatedQuote({ text, activeKey }) {
       className="font-sans text-xl md:text-3xl text-center text-brand-white max-w-[900px]"
       initial="hidden"
       animate="visible"
-      variants={{ visible: { transition: { staggerChildren: 0.03 } } }}
+      exit={{ opacity: 0, filter: "blur(6px)", transition: { duration: 0.2 } }}
+      variants={{ visible: { transition: { staggerChildren: 0.025 } } }}
     >
       {words.map((word, i) => (
         <motion.span
@@ -81,26 +82,34 @@ function AnimatedQuote({ text, activeKey }) {
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const { scrollYProgress } = useScroll();
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Direct scroll-linked value, no spring — moves exactly with scroll,
+  // never lags behind and never overshoots/rebounces after you stop.
+  // Widened range (-25% to 25%) so it also reads as faster/more dramatic.
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-25%", "25%"]);
 
   const current = testimonials[active];
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+    >
       {/* Parallax background */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          style={{ y: bgY }}
-          className="absolute inset-[-25%] w-full h-[150%]"
-        >
+        <motion.div style={{ y: bgY }} className="absolute inset-0">
           <img
             src={backgroundImage}
             alt=""
-            className="w-full h-full object-cover"
+            className="absolute top-1/2 left-1/2 w-full h-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
           />
         </motion.div>
-        {/* Dark overlay for readability, matches brand black */}
         <div className="absolute inset-0 bg-brand-black/70" />
       </div>
 
@@ -109,16 +118,24 @@ export default function Testimonials() {
         <div className="flex flex-col items-center gap-8">
           <StarRating />
 
-          <AnimatedQuote text={current.quote} activeKey={active} />
+          <AnimatePresence mode="wait">
+            <AnimatedQuote text={current.quote} activeKey={active} />
+          </AnimatePresence>
 
-          <div className="flex flex-col items-center gap-1">
+          <motion.div
+            key={`meta-${active}`}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.15 }}
+            className="flex flex-col items-center gap-1"
+          >
             <p className="font-sans text-lg font-semibold text-brand-white">
               {current.name}
             </p>
             <p className="font-sans text-base text-brand-gray">
               {current.location}
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* Avatar selector */}
