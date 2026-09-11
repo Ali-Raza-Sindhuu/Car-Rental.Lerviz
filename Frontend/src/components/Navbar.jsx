@@ -132,12 +132,10 @@ export default function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-      className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-500 ${
-        scrolled ? "bg-black/50 backdrop-blur-md" : "bg-transparent"
-      }`}
+      className="relative z-[100] w-full bg-black"
     >
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-12">
 
