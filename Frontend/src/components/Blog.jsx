@@ -1,5 +1,7 @@
 // components/Blogs.jsx
 import { motion } from "framer-motion";
+import blogImage1 from '../assets/images/blog_image1.webp';
+import blogImage2 from '../assets/images/blog_image2.webp';
 
 const posts = [
   {
@@ -7,7 +9,7 @@ const posts = [
     date: "May 5, 2026",
     badge: "Safety Tips",
     image:
-      "https://framerusercontent.com/images/KAg6M1Og2Wm09U2r4ebOYrXJ0O0.webp",
+      blogImage1,
     alt: "Close-up of a dark grey sports car front wheel",
     aspect: "4272 / 2403",
   },
@@ -16,7 +18,7 @@ const posts = [
     date: "May 5, 2026",
     badge: "Financing",
     image:
-      "https://framerusercontent.com/images/uAUOdBLRaREeRCvYD8xpju2am3A.webp",
+      blogImage2,
     alt: "Grey car, autumn road",
     aspect: "3648 / 5472",
   },

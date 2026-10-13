@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
+import ctaImage from '../assets/images/cta_image.webp';
 
 const wordVariants = {
   hidden: { opacity: 0.001, filter: "blur(10px)", y: 10 },
@@ -60,7 +61,7 @@ const CtaSection = () => {
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <motion.div style={{ y: bgY }} className="absolute inset-0">
           <img
-            src="https://framerusercontent.com/images/RhG8Klgzb1zmx70sXlsScJYlCc0.webp?width=7000&height=5273"
+            src={ctaImage}
             alt=""
             className="absolute top-1/2 left-1/2 w-full h-[130%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
           />

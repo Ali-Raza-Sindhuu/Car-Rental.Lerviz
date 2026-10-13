@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import logoImage from '../assets/images/Lerviz_logo.avif';
 
 /** Counts up from 0 to a target number once the element scrolls into view. */
 function useCountUp(target, duration = 1500) {
@@ -106,7 +107,7 @@ function Intro() {
           // use a wrapper motion div to separate entrance from spin.
         >
           <motion.img
-            src="https://framerusercontent.com/images/b2xkpGrYvkjqvkVsb2OlLXIKebg.png"
+            src={logoImage}
             alt=""
             loading="lazy"
             decoding="async"

@@ -1,6 +1,8 @@
 // components/VideoHero.jsx
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import heroVideo from '../assets/videos/hero.mp4';
+import posterImage from '../assets/images/video_hero_image.avif';
 
 // Word-stagger — plain fade+rise (no blur, for video overlay legibility)
 const wordVariants = {
@@ -41,8 +43,8 @@ const VideoHero = () => {
       {/* BG Video */}
       <div className="absolute inset-0 w-full h-full">
         <video
-          src="https://framerusercontent.com/assets/j7YOKdrFaHxjuuoW9KsUBzpsqN0.mp4"
-          poster="https://framerusercontent.com/images/d5M4QubEydCYK9352w5qillv0MI.png?width=1200&height=800"
+          src={heroVideo}
+          poster={posterImage}
           loop
           muted
           playsInline

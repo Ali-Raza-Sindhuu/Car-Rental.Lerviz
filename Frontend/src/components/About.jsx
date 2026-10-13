@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ScanHeart, CarTaxiFront, HeartHandshake } from "lucide-react";
+import aboutImage from '../assets/images/about_image.avif';
 
 /** Reusable rolling/swap-up text for the outline button, matching Hero's CTA style */
 function RollingText({ text }) {
@@ -134,7 +135,7 @@ function About() {
             transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
           >
             <img
-              src="https://framerusercontent.com/images/2NMueIpDVmXjmCiTJmY2fCC5FY.png"
+              src={aboutImage}
               alt="Red McLaren in luxury showroom"
               loading="lazy"
               decoding="async"

@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import whychoseus1 from '../assets/images/whychoseus.avif';
+import whychoseus2 from '../assets/images/whychoseus2.avif';
+import whychoseus3 from '../assets/images/whychoseus3.avif';
+import whychoseus4 from '../assets/images/whychoseus4.avif';
 
 const features = [
   {
@@ -6,7 +10,7 @@ const features = [
     description:
       "Curated inventory of the world's most prestigious automotive brands.",
     image:
-      "https://framerusercontent.com/images/p2zVxW5GfLqiJQjAb4ceXzAV28.jpg",
+      whychoseus1,
     icon: (
       <svg viewBox="0 0 28 25" fill="none" className="w-6 h-6">
         <path
@@ -21,7 +25,7 @@ const features = [
     description:
       "Every vehicle undergoes a rigorous 150-point technical inspection.",
     image:
-      "https://framerusercontent.com/images/4OFvMIaRayQ0f2o7F9Rn8GFDNI.jpg",
+      whychoseus2,
     icon: (
       <svg viewBox="0 0 28 25" fill="none" className="w-6 h-6">
         <path
@@ -36,7 +40,7 @@ const features = [
     description:
       "Comprehensive coverage plans that give you peace of mind on every mile.",
     image:
-      "https://framerusercontent.com/images/ETAkL6ocKle9hFoTeTN9seAxRZc.webp",
+      whychoseus3,
     icon: (
       <svg viewBox="0 0 28 25" fill="none" className="w-6 h-6">
         <path
@@ -51,7 +55,7 @@ const features = [
     description:
       "Tailored financial solutions designed to fit your unique portfolio.",
     image:
-      "https://framerusercontent.com/images/6J3wpAEtDoifWCoRoFkUas3sc.webp",
+      whychoseus4,
     icon: (
       <svg viewBox="0 0 28 25" fill="none" className="w-6 h-6">
         <path

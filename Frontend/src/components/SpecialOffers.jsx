@@ -1,6 +1,7 @@
 // components/SpecialOffers.jsx
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import specialOffer from '../assets/images/special_offer.avif';
 
 const offers = [
   {
@@ -12,7 +13,7 @@ const offers = [
     href: "./inventory",
     variant: "light",
     image:
-      "https://framerusercontent.com/images/ROjnZ8VDrIOIhjHodcx9yt6i0w.webp",
+      specialOffer,
   },
   {
     id: "apr-financing",

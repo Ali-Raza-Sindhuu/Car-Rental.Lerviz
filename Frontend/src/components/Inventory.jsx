@@ -2,13 +2,16 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import InventoryCard from "./InventoryCard";
+import inventory1 from '../assets/images/inventory1.avif';
+import inventory2 from '../assets/images/inventory2.jpg';
+import inventory3 from '../assets/images/inventory3.jpg';
 
 const inventoryData = [
   {
     id: 1,
     name: "Lamborghini Huracán",
     slug: "lamborghini-huracán",
-    image: "https://framerusercontent.com/images/2qaOY29IxvV9sFJrKBsLiQXaSw.jpg",
+    image: inventory1,
     topSpeed: "325 km/h",
     transmission: "Automatic",
     year: "2023",
@@ -17,7 +20,7 @@ const inventoryData = [
     id: 2,
     name: "Audi R8",
     slug: "audi-r8",
-    image: "https://framerusercontent.com/images/iuCR1PM3FAVHTBueXbuukfuD7Y8.jpg",
+    image: inventory2,
     topSpeed: "330 km/h",
     transmission: "Automatic",
     year: "2022",
@@ -26,7 +29,7 @@ const inventoryData = [
     id: 3,
     name: "BMW M4",
     slug: "bmw-m4",
-    image: "https://framerusercontent.com/images/nniBMDKFMcgHgLnujuthibms05Y.jpg",
+    image: inventory3,
     topSpeed: "290 km/h",
     transmission: "Automatic",
     year: "2023",
