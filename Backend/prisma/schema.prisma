@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum VehicleStatus {
+  ACTIVE
+  MAINTENANCE
+  ARCHIVED
+}
+
+enum Transmission {
+  AUTOMATIC
+  MANUAL
+}
+
+enum FuelType {
+  PETROL
+  DIESEL
+  HYBRID
+  ELECTRIC
+}
+
+model Branch {
+  id        String    @id @default(uuid()) @db.Char(36)
+  slug      String    @unique @db.VarChar(160)
+  name      String    @db.VarChar(120)
+  timezone  String    @db.VarChar(64)
+  address   String    @db.VarChar(255)
+  active    Boolean   @default(true)
+  vehicles  Vehicle[]
+  createdAt DateTime  @default(now()) @db.DateTime(3)
+  updatedAt DateTime  @updatedAt @db.DateTime(3)
+}
+
+model Category {
+  id       String    @id @default(uuid()) @db.Char(36)
+  slug     String    @unique @db.VarChar(80)
+  name     String    @unique @db.VarChar(80)
+  vehicles Vehicle[]
+}
+
+model Vehicle {
+  id                 String        @id @default(uuid()) @db.Char(36)
+  slug               String        @unique @db.VarChar(160)
+  vin                String        @unique @db.VarChar(17)
+  registrationNumber String        @unique @db.VarChar(32)
+  make               String        @db.VarChar(80)
+  model              String        @db.VarChar(80)
+  modelYear          Int           @db.UnsignedSmallInt
+  seats              Int           @db.UnsignedTinyInt
+  transmission       Transmission
+  fuelType           FuelType
+  status             VehicleStatus @default(ACTIVE)
+  baseDailyMinor     BigInt        @db.UnsignedBigInt
+  currency           String        @db.Char(3)
+  branchId           String        @db.Char(36)
+  categoryId         String        @db.Char(36)
+  branch             Branch        @relation(fields: [branchId], references: [id], onDelete: Restrict)
+  category           Category      @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  images             VehicleImage[]
+  createdAt          DateTime      @default(now()) @db.DateTime(3)
+  updatedAt          DateTime      @updatedAt @db.DateTime(3)
+
+  @@index([status, branchId, categoryId])
+}
+
+model VehicleImage {
+  id        String  @id @default(uuid()) @db.Char(36)
+  vehicleId String  @db.Char(36)
+  url       String  @db.VarChar(512)
+  altText   String  @db.VarChar(255)
+  sortOrder Int     @default(0) @db.UnsignedInt
+  vehicle   Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId, sortOrder])
+}

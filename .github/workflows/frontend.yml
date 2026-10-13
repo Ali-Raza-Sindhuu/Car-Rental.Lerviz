@@ -1,0 +1,49 @@
+name: Frontend and integration checks
+on:
+  push:
+    paths: ['Frontend/**', 'Backend/**', '.github/workflows/frontend.yml']
+  pull_request:
+    paths: ['Frontend/**', 'Backend/**', '.github/workflows/frontend.yml']
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: ephemeral-test-root
+          MYSQL_DATABASE: lerviz_api_test
+          MYSQL_USER: lerviz_test
+          MYSQL_PASSWORD: ephemeral-test-only
+        ports: ['3307:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1"
+          --health-interval=5s --health-timeout=5s --health-retries=30
+    env:
+      DATABASE_URL: mysql://lerviz_test:ephemeral-test-only@127.0.0.1:3307/lerviz_api_test
+      TEST_DATABASE_URL: mysql://lerviz_test:ephemeral-test-only@127.0.0.1:3307/lerviz_api_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: |
+            Frontend/package-lock.json
+            Backend/package-lock.json
+      - run: npm ci && npm run db:generate && npm run db:migrate && npm test
+        working-directory: Backend
+      - run: npm run db:seed
+        working-directory: Backend
+        env:
+          NODE_ENV: development
+      - run: npm ci && npx playwright install --with-deps chromium && npm run build && npm test && npm run test:live
+        working-directory: Frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-results
+          path: |
+            Frontend/playwright-report
+            Frontend/test-results
+            Frontend/test-results-live

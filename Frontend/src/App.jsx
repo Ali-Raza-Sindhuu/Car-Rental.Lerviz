@@ -1,17 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import { createBrowserRouter } from "react-router-dom";
+import RootLayout from "@/components/layout/RootLayout";
+import Home from "@/pages/Home";
+import NotFound from "@/pages/NotFound";
 
-export default function App() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Route>
-    </Routes>
-  );
-}
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+]);

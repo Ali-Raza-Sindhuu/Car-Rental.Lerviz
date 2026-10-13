@@ -1,4 +1,9 @@
-﻿__pycache__
+node_modules
+dist
+.env
+*.env
+__pycache__
+test
 *.pyc
 *.pyo
 *.pyd
@@ -6,7 +11,6 @@
 env/
 venv/
 .venv/
-.env
 .git
 .gitignore
 Dockerfile*

@@ -1,16 +1,56 @@
-# React + Vite
+# Lerviz – Frontend (home page)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Clean, frontend-only build of the home page. No backend, no database, no Docker.
 
-Currently, two official plugins are available:
+**Stack:** React 19 · Vite · JavaScript (no TypeScript) · Tailwind CSS v4 · shadcn/ui (Radix) · React Router DOM
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
 
-## React Compiler
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build into /dist
+npm run preview    # serve the production build locally
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Requires Node.js 20 or newer. Fonts (Michroma, Outfit, Space Grotesk) load from Google Fonts, so the first load needs internet.
 
-## Expanding the ESLint configuration
+## Project structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+  main.jsx                 entry
+  App.jsx                  router (/ and a 404)
+  index.css                Tailwind v4 + theme tokens (@theme)
+  pages/                   Home, NotFound
+  components/
+    layout/RootLayout.jsx  shared shell + scroll handling
+    home/                  one file per section of the home page
+    common/                SlantButton, ArrowPair, Heading, SectionTag, Avatars
+    ui/                    shadcn components (button, accordion)
+  data/
+    site.js                brand name, nav, footer links, email
+    home.js                all copy + image paths for the home page
+  lib/utils.js             cn() helper
+public/images/             optimized car photos (swap freely)
+docs/BACKEND.md            backend plan (documentation only)
+```
+
+## Editing content
+
+- Brand name, nav links, footer links, email: `src/data/site.js`
+- Headlines, cars, FAQ, testimonials, stats, image paths: `src/data/home.js`
+- Colours and fonts: `@theme` block in `src/index.css`
+
+## Adding more shadcn components
+
+`components.json` is already set up for JavaScript (`tsx: false`), so this works:
+
+```bash
+npx shadcn@latest add dialog
+```
+
+## Notes
+
+- Everything on the page is static. The newsletter form and the "Contact us" button do not send anything yet.
+- The backend is described in `docs/BACKEND.md`. Nothing in it is implemented.

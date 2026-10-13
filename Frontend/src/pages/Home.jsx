@@ -1,33 +1,25 @@
-import About from "../components/About";
-import Blogs from "../components/Blog";
-import PartnersLogo from "../components/Carousel";
-import WhyChooseUs from "../components/ChoseUs";
-import CtaSection from "../components/CtaSection";
-import Gallery from "../components/Gallery";
-import Hero from "../components/Hero";
-import Intro from "../components/Intro";
-import Inventory from "../components/Inventory";
-import SpecialOffers from "../components/SpecialOffers";
-import Team from "../components/Team";
-import Testimonials from "../components/Testemonial";
-import VideoHero from "../components/VideoHero";
+import Hero from "@/components/home/Hero";
+import About from "@/components/home/About";
+import Inventory from "@/components/home/Inventory";
+import Offer from "@/components/home/Offer";
+import Testimonials from "@/components/home/Testimonials";
+import Brands from "@/components/home/Brands";
+import Faq from "@/components/home/Faq";
+import Cta from "@/components/home/Cta";
+import Footer from "@/components/home/Footer";
 
 export default function Home() {
   return (
-    <>
-    <Hero/>
-    <PartnersLogo/>
-    <Intro/>
-    <About/>
-    <Inventory/>
-    <WhyChooseUs/>
-    <Testimonials/>
-    <SpecialOffers/>
-    <VideoHero/>
-    <Team/>
-    <Gallery/>
-    <Blogs/>
-    <CtaSection/>
-    </>
+    <main className="mx-auto w-full max-w-[1360px] space-y-24 px-4 pb-6 md:space-y-32 md:px-8">
+      <Hero />
+      <About />
+      <Inventory />
+      <Offer />
+      <Testimonials />
+      <Brands />
+      <Faq />
+      <Cta />
+      <Footer />
+    </main>
   );
 }
