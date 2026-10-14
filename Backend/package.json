@@ -13,7 +13,6 @@
     "db:migrate": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts"
   },
-  "prisma": { "seed": "tsx prisma/seed.ts" },
   "dependencies": {
     "@prisma/client": "6.19.3",
     "bcrypt": "^6.0.0",
