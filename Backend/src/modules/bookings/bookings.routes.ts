@@ -1,0 +1,20 @@
+import { Router } from 'express';
+import { authenticate, authorize } from '../../common/middleware/auth';
+import { validate } from '../../common/middleware/validate';
+import { BookingsController } from './bookings.controller';
+import { bookingIdSchema, bookingInputSchema, cancelSchema, rejectSchema, returnSchema } from './bookings.schema';
+
+const controller = new BookingsController();
+export const bookingRoutes = Router();
+export const bookingAdminRoutes = Router();
+bookingRoutes.post('/quote', validate(bookingInputSchema), controller.quote);
+bookingRoutes.post('/', authenticate, authorize('CUSTOMER'), validate(bookingInputSchema), controller.create);
+bookingRoutes.get('/my', authenticate, authorize('CUSTOMER'), controller.mine);
+bookingRoutes.get('/:id', authenticate, authorize('CUSTOMER'), validate(bookingIdSchema, 'params'), controller.detail);
+bookingRoutes.post('/:id/cancel', authenticate, authorize('CUSTOMER'), validate(bookingIdSchema, 'params'), validate(cancelSchema), controller.cancel);
+bookingAdminRoutes.use(authenticate, authorize('ADMIN'));
+bookingAdminRoutes.get('/', controller.listAdmin);
+bookingAdminRoutes.patch('/:id/confirm', validate(bookingIdSchema, 'params'), controller.confirm);
+bookingAdminRoutes.patch('/:id/reject', validate(bookingIdSchema, 'params'), validate(rejectSchema), controller.reject);
+bookingAdminRoutes.patch('/:id/pickup', validate(bookingIdSchema, 'params'), controller.pickup);
+bookingAdminRoutes.patch('/:id/return', validate(bookingIdSchema, 'params'), validate(returnSchema), controller.returnVehicle);

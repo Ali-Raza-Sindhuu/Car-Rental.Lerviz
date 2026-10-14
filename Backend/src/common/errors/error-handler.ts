@@ -21,6 +21,10 @@ export const errorHandler: ErrorRequestHandler = (error: unknown, _req, res, _ne
     res.status(422).json({ success: false, error: { code: 'INVALID_REFERENCE', message: 'A referenced record does not exist', details: [] } });
     return;
   }
+  if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2034') {
+    res.status(409).json({ success: false, error: { code: 'BOOKING_CONFLICT', message: 'The reservation changed during booking; please retry', details: [] } });
+    return;
+  }
   logger.error({ error }, 'Unhandled request error');
   res.status(500).json({ success: false, error: { code: 'INTERNAL_ERROR', message: 'An unexpected error occurred', details: [] } });
 };

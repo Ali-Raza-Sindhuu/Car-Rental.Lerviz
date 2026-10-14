@@ -3,6 +3,8 @@ import { authRoutes } from './modules/auth/auth.routes';
 import { categoryAdminRoutes, categoryPublicRoutes } from './modules/categories/categories.routes';
 import { locationAdminRoutes, locationPublicRoutes } from './modules/locations/locations.routes';
 import { vehicleAdminRoutes, vehiclePublicRoutes } from './modules/vehicles/vehicles.routes';
+import { customerAdminRoutes, customerRoutes } from './modules/customers/customers.routes';
+import { bookingAdminRoutes, bookingRoutes } from './modules/bookings/bookings.routes';
 
 export const apiRoutes = Router();
 apiRoutes.use('/auth', authRoutes);
@@ -12,3 +14,7 @@ apiRoutes.use('/vehicles', vehiclePublicRoutes);
 apiRoutes.use('/admin/categories', categoryAdminRoutes);
 apiRoutes.use('/admin/locations', locationAdminRoutes);
 apiRoutes.use('/admin/vehicles', vehicleAdminRoutes);
+apiRoutes.use('/customers', customerRoutes);
+apiRoutes.use('/admin/customers', customerAdminRoutes);
+apiRoutes.use('/bookings', bookingRoutes);
+apiRoutes.use('/admin/bookings', bookingAdminRoutes);
