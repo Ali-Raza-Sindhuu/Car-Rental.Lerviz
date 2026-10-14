@@ -7,6 +7,7 @@ import { env } from './config/env';
 import { logger } from './config/logger';
 import { notFound } from './common/middleware/not-found';
 import { errorHandler } from './common/errors/error-handler';
+import { apiRoutes } from './routes';
 
 export const app = express();
 app.disable('x-powered-by');
@@ -16,5 +17,6 @@ app.use(express.json({ limit: '1mb' }));
 app.use(pinoHttp({ logger }));
 app.use(rateLimit({ windowMs: 60_000, limit: 120, standardHeaders: 'draft-7', legacyHeaders: false }));
 app.get('/health', (_req, res) => res.json({ success: true, data: { status: 'ok' } }));
+app.use('/api/v1', apiRoutes);
 app.use(notFound);
 app.use(errorHandler);

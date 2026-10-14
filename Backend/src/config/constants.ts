@@ -10,5 +10,5 @@ export const RENTAL = {
   halfRefundHours: 24,
 } as const;
 
-export const AUTH = { accessMinutes: 15, refreshDays: 7, bcryptRounds: 12 } as const;
+export const AUTH = { accessMinutes: 15, refreshDays: 7, bcryptRounds: 12, loginWindowMinutes: 15, loginAttempts: 10 } as const;
 export const PAGINATION = { defaultPage: 1, defaultLimit: 10, maxLimit: 100 } as const;
