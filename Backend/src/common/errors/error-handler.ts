@@ -17,6 +17,10 @@ export const errorHandler: ErrorRequestHandler = (error: unknown, _req, res, _ne
     res.status(409).json({ success: false, error: { code: 'DUPLICATE', message: 'A record with that value already exists', details: [] } });
     return;
   }
+  if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2003') {
+    res.status(422).json({ success: false, error: { code: 'INVALID_REFERENCE', message: 'A referenced record does not exist', details: [] } });
+    return;
+  }
   logger.error({ error }, 'Unhandled request error');
   res.status(500).json({ success: false, error: { code: 'INTERNAL_ERROR', message: 'An unexpected error occurred', details: [] } });
 };
