@@ -1,20 +1,24 @@
 import { Link } from "react-router-dom";
 import { Minus, Plus } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Avatars from "@/components/common/Avatars";
 import SectionTag from "@/components/common/SectionTag";
 import SlantButton from "@/components/common/SlantButton";
-import Heading from "@/components/common/Heading";
+import RevealHeading from "@/components/common/RevealHeading";
 import { faq } from "@/data/home";
 import { site } from "@/data/site";
+import { fadeUp, inView } from "@/lib/motion";
 
 export default function Faq() {
+  const reduced = useReducedMotion();
   return (
-    <section id="test-drive" className="mx-auto w-full max-w-[30.5rem] text-center">
+    <section id="test-drive" className="mx-auto w-full max-w-[40rem] @container text-center">
       <SectionTag>{faq.tag}</SectionTag>
-      <Heading className="mt-4 text-[clamp(1.5rem,3vw,2.3rem)]">{faq.title}</Heading>
+      <RevealHeading className="mt-4 text-[max(1.5rem,4cqw)]">{faq.title}</RevealHeading>
       <p className="mt-3 text-xs text-muted-foreground uppercase">{faq.text}</p>
 
+      <motion.div variants={reduced ? undefined : fadeUp} initial={reduced ? false : "hidden"} whileInView="visible" viewport={inView}>
       <Accordion type="single" collapsible defaultValue={faq.defaultOpen} className="mt-9 space-y-3 text-left">
         {faq.items.map((item, i) => (
           <AccordionItem
@@ -36,8 +40,9 @@ export default function Faq() {
           </AccordionItem>
         ))}
       </Accordion>
+      </motion.div>
 
-      <div className="relative mt-14 overflow-hidden rounded-2xl bg-mist p-5 pb-20 text-left sm:pb-5">
+      <motion.div variants={reduced ? undefined : fadeUp} initial={reduced ? false : "hidden"} whileInView="visible" viewport={inView} className="relative mt-14 overflow-hidden rounded-2xl bg-mist p-5 pb-20 text-left sm:pb-5">
         <div className="flex items-center gap-3">
           <Avatars initials={["AK", "MR", "JS"]} size="size-8" ring="ring-mist" />
           <h3 className="font-display text-lg">{faq.help.title}</h3>
@@ -51,7 +56,7 @@ export default function Faq() {
             Contact us
           </SlantButton>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

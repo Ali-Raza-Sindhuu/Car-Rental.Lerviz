@@ -6,6 +6,7 @@ import { pagination } from '../../common/utils/pagination';
 import { assertTransition } from './booking.state';
 import { bookingListSchema } from './bookings.schema';
 import { lateFee } from './pricing.service';
+import { mockGateway } from '../payments/gateways/mock.gateway';
 
 type List = z.infer<typeof bookingListSchema>;
 
@@ -61,7 +62,10 @@ export class BookingAdminService {
       const fee = lateFee(booking.endAt, actual, booking.dailyRateSnapshot);
       if (fee.gt(0)) await tx.payment.create({ data: { bookingId: id, type: 'LATE_FEE', amount: fee, method: 'ONLINE', status: 'PENDING' } });
       const depositPaid = booking.payments.filter(payment => payment.type === 'DEPOSIT' && payment.status === 'PAID').reduce((sum, payment) => sum.add(payment.amount), new Prisma.Decimal(0));
-      if (depositPaid.gt(0)) await tx.payment.create({ data: { bookingId: id, type: 'REFUND', amount: depositPaid, method: 'ONLINE', status: 'REFUNDED', paidAt: actual, transactionRef: `MOCK-DEPOSIT-${booking.bookingNo}` } });
+      if (depositPaid.gt(0)) {
+        const gateway = await mockGateway.refund(depositPaid);
+        await tx.payment.create({ data: { bookingId: id, type: 'REFUND', amount: depositPaid, method: 'ONLINE', status: 'REFUNDED', ...gateway } });
+      }
       await tx.vehicle.update({ where: { id: booking.vehicleId }, data: { mileageKm } });
       return tx.booking.update({ where: { id }, data: { status: 'COMPLETED', actualReturnAt: actual, lateFee: fee, totalAmount: booking.totalAmount.add(fee) } });
     }, { isolationLevel: Prisma.TransactionIsolationLevel.Serializable });

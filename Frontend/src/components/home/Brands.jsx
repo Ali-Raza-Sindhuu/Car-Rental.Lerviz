@@ -1,31 +1,34 @@
-import Heading from "@/components/common/Heading";
+import { motion, useReducedMotion } from "motion/react";
+import RevealHeading from "@/components/common/RevealHeading";
 import { brands } from "@/data/home";
+import { fadeUp, inView, stagger } from "@/lib/motion";
 
 const marks = {
-  Ferrari: "font-display text-[0.7rem] tracking-widest text-[#b30000]",
+  Ferrari: "font-display text-[0.7rem] tracking-widest text-brand",
   BMW: "font-logo text-lg font-bold",
-  Lamborghini: "font-display text-[0.55rem] tracking-wider text-amber-600",
+  Lamborghini: "font-display text-[0.55rem] tracking-wider text-ink",
   Audi: "font-logo text-lg font-bold",
-  Ford: "font-logo text-xl font-bold text-blue-800 italic",
+  Ford: "font-logo text-xl font-bold text-ink italic",
 };
 
 export default function Brands() {
+  const reduced = useReducedMotion();
   return (
-    <section className="text-center">
-      <Heading className="mx-auto text-[clamp(1rem,1.9vw,1.5rem)] font-normal">{brands.title}</Heading>
-      <ul className="mt-12 flex flex-wrap items-center justify-center">
+    <section className="@container text-center">
+      <RevealHeading className="mx-auto text-[max(1rem,2cqw)] font-normal">{brands.title}</RevealHeading>
+      <motion.ul variants={reduced ? undefined : stagger} initial={reduced ? false : "hidden"} whileInView="visible" viewport={inView} className="mt-[max(2rem,5cqw)] flex flex-wrap items-center justify-center">
         {brands.items.map((b) => (
-          <li key={b} className="-ml-1 grid size-24 place-items-center rounded-full bg-mist shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8)] first:ml-0 sm:size-28">
+          <motion.li variants={reduced ? undefined : fadeUp} key={b} className="-ml-1 grid size-[max(5rem,11cqw)] place-items-center rounded-full border border-white bg-mist first:ml-0">
             <span className={marks[b]}>{b}</span>
-          </li>
+          </motion.li>
         ))}
-        <li className="-ml-1 grid size-24 place-items-center rounded-full bg-mist sm:size-28">
+        <motion.li variants={reduced ? undefined : fadeUp} className="-ml-1 grid size-[max(5rem,11cqw)] place-items-center rounded-full border border-white bg-mist">
           <span>
             <span className="block font-display text-base">{brands.more.value}</span>
             <span className="block text-[0.6rem] text-muted-foreground uppercase">{brands.more.label}</span>
           </span>
-        </li>
-      </ul>
+        </motion.li>
+      </motion.ul>
     </section>
   );
 }

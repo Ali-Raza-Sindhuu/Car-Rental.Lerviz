@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { Camera } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import SlantButton from "@/components/common/SlantButton";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { inView, maskedRise } from "@/lib/motion";
 
 const socialGlyph = {
   instagram: <Camera className="size-3.5" />,
@@ -12,15 +16,16 @@ const socialGlyph = {
 };
 
 export default function Footer() {
+  const reduced = useReducedMotion();
   return (
-    <footer className="mesh-dark relative overflow-hidden rounded-[2rem] text-white lg:rounded-[2.5rem]">
-      <div className="grid gap-12 p-6 sm:p-10 lg:grid-cols-[repeat(100,minmax(0,1fr))] lg:gap-0 lg:px-12 lg:pt-12 lg:pb-0">
-        <div className="lg:col-span-28">
+    <footer className="mesh-dark relative @container overflow-hidden rounded-[2rem] text-white md:rounded-[2.5rem]">
+      <div className="grid gap-12 p-[max(1.5rem,5cqw)] pb-0 md:grid-cols-[35%_1fr] md:gap-[5cqw]">
+        <div>
           <Link to="/" className="font-logo text-3xl leading-none font-semibold">
             {site.name}
           </Link>
           <p className="mt-6 max-w-[16rem] text-[0.7rem]/relaxed uppercase">
-            Every week we share the latest arrivals, best deals, and exclusive offers.
+            {site.footerIntro}
           </p>
           <div className="mt-6 flex items-center gap-4 text-[0.7rem] uppercase">
             Follow us on
@@ -38,11 +43,11 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <hr className="mt-9 border-white/25" />
+          <Separator className="mt-9 bg-white/25" />
           <p className="mt-9 text-[0.7rem] uppercase">{site.copyright}</p>
         </div>
 
-        <div className="lg:col-span-60 lg:col-start-41">
+        <div>
           <div className="grid grid-cols-2 gap-x-6 gap-y-8 text-[0.7rem] uppercase sm:grid-cols-3">
             {site.footerColumns.map((col, ci) => (
               <ul key={ci} className="space-y-4">
@@ -57,20 +62,20 @@ export default function Footer() {
             ))}
           </div>
 
-          <h3 className="mt-12 font-display text-base">Subscribe on Newsletter</h3>
+          <h3 className="mt-12 font-display text-base">{site.newsletterTitle}</h3>
           <p className="mt-4 max-w-xs text-[0.7rem]/relaxed uppercase">
-            Get the latest AI insights, updates, and innovations delivered straight to your inbox.
+            {site.newsletterText}
           </p>
           <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex max-w-md items-center justify-between rounded-xl border border-white/25 p-1 pl-4">
             <label htmlFor="newsletter" className="sr-only">
               Email address
             </label>
-            <input
+            <Input
               id="newsletter"
               type="email"
               required
               placeholder="TYPE E-MAIL HERE"
-              className="min-w-0 flex-1 bg-transparent text-[0.65rem] text-white outline-none placeholder:text-white/40"
+              className="min-w-0 flex-1 border-0 bg-transparent text-[0.65rem] text-white placeholder:text-white/40"
             />
             <SlantButton type="submit" look="outline-dark" accent="white" className="h-8 sm:h-9">
               Subscribe
@@ -89,9 +94,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <p aria-hidden className="pointer-events-none mt-6 translate-y-[18%] text-center font-display text-[clamp(3.5rem,15.5vw,13rem)] leading-none text-white/45 select-none">
-        {site.wordmark}
-      </p>
+      <div aria-hidden className="pointer-events-none mt-6 overflow-hidden text-center select-none">
+        <motion.p variants={reduced ? undefined : maskedRise} initial={reduced ? false : "hidden"} whileInView="visible" viewport={inView} className="translate-y-[18%] font-display text-[max(3.1rem,14cqw)] leading-none text-white/45">{site.wordmark}</motion.p>
+      </div>
     </footer>
   );
 }

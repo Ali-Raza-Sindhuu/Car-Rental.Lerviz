@@ -9,6 +9,7 @@ import { assertAvailable } from './availability.service';
 import { assertTransition } from './booking.state';
 import { bookingInputSchema, bookingListSchema } from './bookings.schema';
 import { priceRental, refundFraction, validateRentalDates } from './pricing.service';
+import { mockGateway } from '../payments/gateways/mock.gateway';
 
 type Input = z.infer<typeof bookingInputSchema>;
 type List = z.infer<typeof bookingListSchema>;
@@ -104,7 +105,10 @@ export class BookingsService {
       const rentalPaid = booking.payments.filter(payment => payment.type === 'RENTAL' && payment.status === 'PAID').reduce((sum, payment) => sum.add(payment.amount), new Prisma.Decimal(0));
       const depositPaid = booking.payments.filter(payment => payment.type === 'DEPOSIT' && payment.status === 'PAID').reduce((sum, payment) => sum.add(payment.amount), new Prisma.Decimal(0));
       const refund = rentalPaid.mul(refundFraction(booking.startAt, new Date())).add(depositPaid).toDecimalPlaces(2);
-      if (refund.gt(0)) await tx.payment.create({ data: { bookingId: id, type: 'REFUND', amount: refund, method: 'ONLINE', status: 'REFUNDED', paidAt: new Date(), transactionRef: `MOCK-REFUND-${booking.bookingNo}` } });
+      if (refund.gt(0)) {
+        const gateway = await mockGateway.refund(refund);
+        await tx.payment.create({ data: { bookingId: id, type: 'REFUND', amount: refund, method: 'ONLINE', status: 'REFUNDED', ...gateway } });
+      }
       if (booking.couponId) await tx.coupon.update({ where: { id: booking.couponId }, data: { usedCount: { decrement: 1 } } });
       return tx.booking.update({ where: { id }, data: { status: 'CANCELLED', cancelReason: reason } });
     }, { isolationLevel: Prisma.TransactionIsolationLevel.Serializable });

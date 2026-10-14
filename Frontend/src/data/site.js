@@ -17,4 +17,7 @@ export const site = {
   ],
   legal: ["Privacy policy", "Terms & conditions", "Cookies", "FAQ"],
   socials: ["instagram", "facebook", "linkedin", "x"],
+  footerIntro: "Every week we share the latest arrivals, best deals, and exclusive offers.",
+  newsletterTitle: "Subscribe on Newsletter",
+  newsletterText: "Get the latest arrivals and exclusive offers delivered straight to your inbox.",
 };
