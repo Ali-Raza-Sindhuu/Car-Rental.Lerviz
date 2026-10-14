@@ -1,0 +1,16 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import { rateLimit } from 'express-rate-limit';
+import pinoHttp from 'pino-http';
+import { env } from './config/env';
+import { logger } from './config/logger';
+
+export const app = express();
+app.disable('x-powered-by');
+app.use(helmet());
+app.use(cors({ origin: env.CORS_ORIGIN }));
+app.use(express.json({ limit: '1mb' }));
+app.use(pinoHttp({ logger }));
+app.use(rateLimit({ windowMs: 60_000, limit: 120, standardHeaders: 'draft-7', legacyHeaders: false }));
+app.get('/health', (_req, res) => res.json({ success: true, data: { status: 'ok' } }));
