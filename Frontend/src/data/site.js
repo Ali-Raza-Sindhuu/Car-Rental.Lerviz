@@ -6,6 +6,7 @@ export const site = {
   copyright: "2025 ©DESIGN MONKS. ALL RIGHTS RESERVED",
   nav: [
     { label: "Home", href: "/#home" },
+    { label: "Rent cars", href: "/app" },
     { label: "Features", href: "/#features" },
     { label: "Model", href: "/#model" },
     { label: "Test drive", href: "/#test-drive" },

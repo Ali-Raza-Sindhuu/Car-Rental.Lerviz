@@ -1,4 +1,5 @@
 import SlantButton from "@/components/common/SlantButton";
+import { Link } from "react-router-dom";
 import RevealHeading from "@/components/common/RevealHeading";
 import { motion, useReducedMotion } from "motion/react";
 import { cta, img } from "@/data/home";
@@ -32,8 +33,8 @@ export default function Cta() {
 
       <motion.div variants={reduced ? undefined : fadeUp} initial={reduced ? false : "hidden"} whileInView="visible" viewport={inView} className="absolute inset-x-6 bottom-8 z-10 sm:inset-x-10 md:inset-x-auto md:right-[10%] md:bottom-[24%] md:w-[25rem]">
         <p className="max-w-sm text-xs/relaxed uppercase">{cta.text}</p>
-        <SlantButton className="mt-6" accent="red">
-          Gets started
+        <SlantButton as={Link} to="/app" className="mt-6" accent="red">
+          Find your rental
         </SlantButton>
       </motion.div>
 

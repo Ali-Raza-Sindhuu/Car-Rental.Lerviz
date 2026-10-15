@@ -8,6 +8,8 @@ import { logger } from './config/logger';
 import { notFound } from './common/middleware/not-found';
 import { errorHandler } from './common/errors/error-handler';
 import { apiRoutes } from './routes';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerDocument } from './config/swagger';
 
 export const app = express();
 app.disable('x-powered-by');
@@ -17,6 +19,8 @@ app.use(express.json({ limit: '1mb' }));
 app.use(pinoHttp({ logger }));
 app.use(rateLimit({ windowMs: 60_000, limit: 120, standardHeaders: 'draft-7', legacyHeaders: false }));
 app.get('/health', (_req, res) => res.json({ success: true, data: { status: 'ok' } }));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get('/api/docs.json', (_req, res) => res.json(swaggerDocument));
 app.use('/api/v1', apiRoutes);
 app.use(notFound);
 app.use(errorHandler);

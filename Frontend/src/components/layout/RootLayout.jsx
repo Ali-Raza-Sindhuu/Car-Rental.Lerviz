@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 
@@ -26,7 +26,7 @@ export default function RootLayout() {
   return (
     <div className="min-h-screen overflow-x-clip bg-white">
       <ScrollToTop />
-      <Outlet />
+      <Suspense fallback={null}><Outlet /></Suspense>
     </div>
   );
 }

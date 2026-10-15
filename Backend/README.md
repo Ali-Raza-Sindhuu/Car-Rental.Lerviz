@@ -1,75 +1,69 @@
-# Lerviz API — first backend milestone
+# Car Rental REST API
 
-Node.js 24, NestJS 11, strict TypeScript, Prisma 6 and MySQL 8.4. The Node API implements the public fleet catalog. The old `app/` Python scaffold and `Dockerfile.dev` remain available through the legacy root Compose file.
+A TypeScript and Express backend for a small rental fleet. Customers can search vehicles, preview prices, book, pay, cancel, and review completed rentals. Administrators manage the fleet, customers, bookings, coupons, and maintenance, and can inspect dashboard and revenue reports.
 
-## Run locally
+## Stack and layout
 
-Start the [shared database](../infra/shared/README.md), then from `Backend`:
+Node.js 20+, Express 5, PostgreSQL 16, Prisma 6, Zod 4, JWT, bcrypt, Pino, Jest, and Swagger UI. Source code follows `routes -> controller -> service -> Prisma`; business rules live in services. The database has 12 tables, diagrammed in [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md). The original requirements are in [the backend specification](../docs/CAR_RENTAL_BACKEND_SPEC.md).
+
+```text
+prisma/                 schema, migration, idempotent demo seed
+src/common/             errors, auth, validation, response helpers
+src/config/             environment, constants, Prisma, Swagger
+src/modules/            feature routes, controllers, schemas, services
+tests/unit/             pricing and booking rule tests
+docs/                   ER diagram and endpoint overview
+```
+
+## Quick start with Docker
+
+Create `Backend/.env` from `.env.example` and set the database password and JWT secrets. Then run from `Backend`:
+
+```powershell
+docker compose up --build
+```
+
+Compose starts PostgreSQL and the API. The API container applies the committed migration and runs the idempotent seed before listening on `http://localhost:8000`. Swagger UI is at `http://localhost:8000/api/docs`; the machine-readable document is at `/api/docs.json`. Local PostgreSQL is exposed on port 5433.
+
+## Local development
+
+Start PostgreSQL using `docker compose up -d postgres`, then:
 
 ```powershell
 Copy-Item .env.example .env
-# Edit .env: set DATABASE_URL with the URL-encoded lerviz_app password.
-npm.cmd ci
-npm.cmd run db:generate
-npm.cmd run db:migrate
-npm.cmd run db:seed
-npm.cmd run dev
+npm ci
+npm run db:migrate
+npm run db:seed
+npm run dev
 ```
 
-Seeding is optional, requires `NODE_ENV=development`, and preserves existing records. The single demo vehicle, branch and USD rate are illustrative data, not business policy. Migrations run explicitly; API startup never changes the schema. `db:migrate` uses committed SQL and does not require a shadow database.
+Use `npm run lint`, `npm run build`, and `npm test` to validate the backend. Keep `.env` private. `DATABASE_URL`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, and `POSTGRES_DB` configure the database; `JWT_ACCESS_SECRET` and `JWT_REFRESH_SECRET` must each contain at least 32 characters; `CORS_ORIGIN` and `PORT` configure HTTP.
 
-For Docker, use `shared-mysql` instead of `127.0.0.1` in `Backend/.env`. From the repository root:
+## Demo accounts
 
-```powershell
-docker compose -f compose.node.yml build
-docker compose -f compose.node.yml run --rm backend npm run db:migrate
-docker compose -f compose.node.yml run --rm backend npm run db:seed
-docker compose -f compose.node.yml up -d --wait
+| Role | Email | Password |
+| --- | --- | --- |
+| Administrator | `admin@carrental.com` | `Admin@12345` |
+| Customer | `customer1@example.com` | `Customer@12345` |
+| Customer | `customer2@example.com` | `Customer@12345` |
+| Customer | `customer3@example.com` | `Customer@12345` |
+
+The seed includes three locations, five categories, twenty vehicles, two coupons, and ten example bookings across the lifecycle. Change the demo passwords before exposing a deployed instance.
+
+## Booking design
+
+```mermaid
+flowchart LR
+  PENDING --> CONFIRMED --> ACTIVE --> COMPLETED
+  PENDING --> CANCELLED
+  CONFIRMED --> CANCELLED
+  PENDING --> REJECTED
 ```
 
-Start the shared database first. The Node stack uses port 8000; stop the legacy API if that port is occupied. Rebuild after source changes. `Backend/Dockerfile` builds a non-root runtime image; apply migrations separately before deploying it.
+Reservation creation locks the vehicle row and checks overlapping bookings inside a serializable transaction. Bookings store the quoted daily rate, days, discounts, tax, and deposit. Payment processing uses a mock gateway behind a small interface. Cancellation and returns create refund or late-fee payment records in transactions. Customers may access only their own booking and payment records.
 
-## HTTP contract
+For request examples, authorization, and full endpoint details, use Swagger. [docs/API.md](docs/API.md) gives a short overview. Success responses use `{ "success": true, "data": ..., "meta": ... }`; errors use `{ "success": false, "error": { "code": "...", "message": "...", "details": [] } }`.
 
-| Method / path | Response |
-| --- | --- |
-| `GET /health/live` | Process liveness |
-| `GET /health/ready` | Database and catalog table readiness; sanitized 503 on failure |
-| `GET /api/v1/branches` | Active branches |
-| `GET /api/v1/categories` | Catalog categories |
-| `GET /api/v1/vehicles` | `{ data, pagination: { page, limit, total } }` |
-| `GET /api/v1/vehicles/:slug` | Public vehicle details or 404 |
+## Limitations and future improvements
 
-Fleet filters: `branch` and `category` slugs, `transmission` (`AUTOMATIC`, `MANUAL`), `fuelType` (`PETROL`, `DIESEL`, `HYBRID`, `ELECTRIC`), minimum `seats`, `page` (default 1, maximum 10000), `limit` (default 20, maximum 100). Unknown or invalid query parameters return 400. Ordering is make, model, then ID. Only active vehicles at active branches are public. VINs and registration numbers are never selected for public responses.
-
-`baseDailyMinor` is an exact decimal **string** of currency minor units, avoiding JavaScript integer precision loss. It is a base catalog rate, not a booking quote. Date availability, taxes, deposits, authentication, staff mutations, bookings and payments are not implemented in this milestone. Unknown date filters are rejected rather than implying availability.
-
-## Validation
-
-```powershell
-npm.cmd test
-```
-
-HTTP/config tests use an injected database double. The MySQL integration test is skipped unless `TEST_DATABASE_URL` is set. Run it against the disposable test server (port 3307, no shared volume):
-
-```powershell
-docker compose -f compose.test.yml up -d --wait
-$env:DATABASE_URL='mysql://lerviz_test:ephemeral-test-only@127.0.0.1:3307/lerviz_api_test'
-$env:TEST_DATABASE_URL=$env:DATABASE_URL
-npm.cmd run db:migrate
-npm.cmd test
-docker compose -f compose.test.yml down
-Remove-Item Env:DATABASE_URL, Env:TEST_DATABASE_URL
-```
-
-The test refuses database names other than `lerviz_api_test`, creates uniquely named fixtures, and removes only those fixtures. The test server's data is ephemeral.
-
-Implementation references: [NestJS validation](https://docs.nestjs.com/techniques/validation), [Prisma 6 MySQL connector](https://www.prisma.io/docs/orm/v6/overview/databases/mysql).
-
-The package override pins Prisma's `deepmerge-ts` tooling dependency to 8.0.0 to address [GHSA-ggr8-5vv4-36mx](https://github.com/advisories/GHSA-ggr8-5vv4-36mx). Recheck the override when upgrading Prisma. Client generation, migration deployment and integration tests are verified with this override.
-
-## Verified milestone
-
-Validated on 13 October 2026: TypeScript compilation; all seven HTTP/configuration/MySQL tests; initial migration on disposable MySQL 8.4; demo seed run twice; dependency audit with zero reported vulnerabilities; production Docker build and non-root runtime checks for readiness and fleet responses. The test container was removed afterward. Shared development data was not modified.
-
-The dedicated `backend.yml` CI workflow repeats migration, test, image build and runtime checks. The React frontend now consumes these APIs and `frontend.yml` adds browser and real-MySQL end-to-end checks. The original deployment workflow is manual-only and still needs production assets before deployment. See [manual review](../docs/MANUAL_REVIEW.md).
+Payments are simulated; there is no card processor, email or SMS delivery, image upload service, multi-currency support, or distributed cache. These can be added behind the existing interfaces. The API is independent of the separate frontend in this repository. Database-backed integration tests require a running PostgreSQL instance; the unit suite runs without one.

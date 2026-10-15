@@ -1,56 +1,24 @@
-# Lerviz – Frontend (home page)
+# elcarro frontend
 
-Clean, frontend-only build of the home page. No backend, no database, no Docker.
-
-**Stack:** React 19 · Vite · JavaScript (no TypeScript) · Tailwind CSS v4 · shadcn/ui (Radix) · React Router DOM
+React 19 and Vite frontend for the [car rental API](../Backend/README.md). The existing marketing home page remains at `/`; the functional rental app starts at `/app`.
 
 ## Run locally
 
-```bash
-npm install
-npm run dev        # http://localhost:5173
-npm run build      # production build into /dist
-npm run preview    # serve the production build locally
+Start the backend on `http://localhost:8000` with its PostgreSQL database and seed data. Then, from `Frontend`:
+
+```powershell
+npm ci
+npm run dev
 ```
 
-Requires Node.js 20 or newer. Fonts (Michroma, Outfit, Space Grotesk) load from Google Fonts, so the first load needs internet.
+Open `http://localhost:5173/app`. Vite proxies `/api` to port 8000, so no frontend environment file is required for local development. For a separately hosted backend, set `VITE_API_URL` to its full base URL ending in `/api/v1` (see `.env.example`). Run `npm run build` for a production bundle.
 
-## Project structure
+## Available flows
 
-```
-src/
-  main.jsx                 entry
-  App.jsx                  router (/ and a 404)
-  index.css                Tailwind v4 + theme tokens (@theme)
-  pages/                   Home, NotFound
-  components/
-    layout/RootLayout.jsx  shared shell + scroll handling
-    home/                  one file per section of the home page
-    common/                SlantButton, ArrowPair, Heading, SectionTag, Avatars
-    ui/                    shadcn components (button, accordion)
-  data/
-    site.js                brand name, nav, footer links, email
-    home.js                all copy + image paths for the home page
-  lib/utils.js             cn() helper
-public/images/             optimized car photos (swap freely)
-docs/BACKEND.md            backend plan (documentation only)
-```
+- Public: fleet search with category, location, price, seats, fuel, transmission, date availability, and sorting; vehicle details, booked dates, reviews, and rental quote.
+- Customer: register, sign in, complete profile, change password, book, pay with the mock gateway, inspect payment history, cancel, and review completed rentals.
+- Admin: dashboard, bookings lifecycle, customer status, payment and review lists, reports, and create/update/delete screens for vehicles, categories, locations, maintenance, and coupons. Vehicle images can be added by URL.
 
-## Editing content
+Demo credentials come from the backend seed: `admin@carrental.com` / `Admin@12345` and `customer1@example.com` / `Customer@12345`. The frontend keeps the demo session in browser session storage and rotates refresh tokens through the backend. No real payment credentials are requested.
 
-- Brand name, nav links, footer links, email: `src/data/site.js`
-- Headlines, cars, FAQ, testimonials, stats, image paths: `src/data/home.js`
-- Colours and fonts: `@theme` block in `src/index.css`
-
-## Adding more shadcn components
-
-`components.json` is already set up for JavaScript (`tsx: false`), so this works:
-
-```bash
-npx shadcn@latest add dialog
-```
-
-## Notes
-
-- Everything on the page is static. The newsletter form and the "Contact us" button do not send anything yet.
-- The backend is described in `docs/BACKEND.md`. Nothing in it is implemented.
+The app uses the backend as its data source. The marketing home page still contains illustrative content and can be redesigned independently.

@@ -1,4 +1,5 @@
 import { ChevronDown, ChevronUp, ChevronsRight, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "motion/react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import SlantButton from "@/components/common/SlantButton";
@@ -19,8 +20,8 @@ export default function Inventory() {
             <SectionTag className="text-white/70">{inventory.tag}</SectionTag>
             <RevealHeading className="mt-[max(1.25rem,2cqw)] text-[max(1.6rem,3.4cqw)] font-normal">{inventory.title}</RevealHeading>
             <motion.p variants={reduced ? undefined : fadeUp} initial={reduced ? false : "hidden"} whileInView="visible" viewport={inView} className="mt-5 max-w-[16rem] text-xs/relaxed text-white/80 uppercase">{inventory.text}</motion.p>
-            <SlantButton className="mt-6" accent="red">
-              Browse more
+            <SlantButton as={Link} to="/app" className="mt-6" accent="red">
+              Browse live fleet
             </SlantButton>
           </div>
 

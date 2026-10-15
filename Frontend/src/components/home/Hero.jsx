@@ -80,8 +80,8 @@ export default function Hero() {
           <Heading as="h1" className="text-[clamp(2rem,4.8vw,4rem)] font-normal">
             {"Drive your\ndream today"}
           </Heading>
-          <SlantButton className="mt-7" accent="red">
-            Get started
+          <SlantButton as={Link} to="/app" className="mt-7" accent="red">
+            Browse cars
           </SlantButton>
         </div>
 

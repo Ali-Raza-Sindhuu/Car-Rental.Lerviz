@@ -18,15 +18,17 @@ export class PaymentsService {
       if (booking.status === 'CANCELLED' || booking.status === 'REJECTED') throw new AppError(409, 'PAYMENT_CLOSED', 'Booking cannot be paid');
       const rentalPaid = booking.payments.some(payment => payment.type === 'RENTAL' && payment.status === 'PAID');
       if (!rentalPaid) {
-        if (booking.status !== 'PENDING') throw new AppError(409, 'PAYMENT_CLOSED', 'Rental payment is not open');
+        if (!['PENDING', 'CONFIRMED', 'ACTIVE'].includes(booking.status)) throw new AppError(409, 'PAYMENT_CLOSED', 'Rental payment is not open');
         const rental = await mockGateway.charge(booking.totalAmount);
         const payments = [await tx.payment.create({ data: { bookingId, type: 'RENTAL', amount: booking.totalAmount, method, status: 'PAID', ...rental } })];
         if (booking.depositAmount.gt(0)) {
           const deposit = await mockGateway.charge(booking.depositAmount);
           payments.push(await tx.payment.create({ data: { bookingId, type: 'DEPOSIT', amount: booking.depositAmount, method, status: 'PAID', ...deposit } }));
         }
-        assertTransition(booking.status, 'CONFIRMED');
-        await tx.booking.update({ where: { id: bookingId }, data: { status: 'CONFIRMED' } });
+        if (booking.status === 'PENDING') {
+          assertTransition(booking.status, 'CONFIRMED');
+          await tx.booking.update({ where: { id: bookingId }, data: { status: 'CONFIRMED' } });
+        }
         return payments;
       }
       const late = booking.payments.find(payment => payment.type === 'LATE_FEE' && payment.status === 'PENDING');
@@ -43,7 +45,10 @@ export class PaymentsService {
   }
 
   async list(query: z.infer<typeof paymentListSchema>) {
-    const where: Prisma.PaymentWhereInput = { ...(query.status && { status: query.status }), ...(query.from && { createdAt: { gte: new Date(query.from) } }), ...(query.to && { createdAt: { lte: new Date(query.to) } }) };
+    const where: Prisma.PaymentWhereInput = {
+      ...(query.status && { status: query.status }),
+      ...((query.from || query.to) && { createdAt: { ...(query.from && { gte: new Date(query.from) }), ...(query.to && { lte: new Date(query.to) }) } }),
+    };
     const [data, total] = await this.db.$transaction([
       this.db.payment.findMany({ where, ...pagination(query), orderBy: { [query.sort]: 'desc' }, include: { booking: { select: { bookingNo: true, customer: { select: { fullName: true, email: true } } } } } }),
       this.db.payment.count({ where }),
