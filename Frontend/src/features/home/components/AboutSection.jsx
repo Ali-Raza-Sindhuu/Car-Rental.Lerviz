@@ -29,6 +29,7 @@ const AboutSection = () => (
         >
           <img
             src={firstImage}
+            loading="lazy"
             alt="Grey sports car parked outside a modern building"
             className="size-full object-cover"
           />
@@ -66,6 +67,7 @@ const AboutSection = () => (
         >
           <img
             src={secondImage}
+            loading="lazy"
             alt="Driver at the open trunk of an SUV"
             className="absolute inset-0 size-full object-cover"
           />

@@ -46,6 +46,7 @@ const RentBanner = ({ ctaHref = "/contact" }) => (
       {/* Stacked under the text on mobile, full-width background from md up */}
       <img
         src={image}
+        loading="lazy"
         alt="Off-road SUV with a roof rack"
         className="h-56 w-full object-cover object-right sm:h-72 md:absolute md:inset-0 md:h-full"
       />
