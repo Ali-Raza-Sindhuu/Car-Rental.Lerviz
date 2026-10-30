@@ -32,4 +32,3 @@ Build the production bundle with `npm run build`. Preview it with `npm run previ
 Bundled images are imported from `src/assets/`. Root URLs such as `/image/inventory/bmw-i8.png` resolve under `public/image/inventory/`; do not put `/public` in the URL. The full optional details-gallery list is in `src/features/inventory/details/ASSETS.md`. Missing vehicle photos show a neutral placeholder.
 
 Contact and vehicle enquiry forms validate locally only. Newsletter, Google sign-in, and policy links also need real integration or content before launch. See `PLACEHOLDERS.md` for replacement points.
-

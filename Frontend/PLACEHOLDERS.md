@@ -30,4 +30,3 @@ These values and integrations are illustrative. Replace or verify them before pu
 | src/features/account/authApi.js | 1 | Localhost API fallback; auth area deliberately untouched |
 
 A working Privacy Policy, Terms of Service, real enquiry endpoint, newsletter endpoint and verified dealer content must be supplied separately. No policy text has been invented.
-
