@@ -31,6 +31,14 @@ const linkGroups = [
 
 const legalLinks = ["Privacy Policy", "Terms & Conditions"];
 
+const pageLinks = {
+  "Our Story": "/about",
+  "About Revex": "/about",
+  "Service & Maintenance": "/services",
+  "Book a Test Drive": "/contact",
+  "Find a Dealer": "/contact",
+};
+
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f05a1a] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900";
 
@@ -85,12 +93,12 @@ const Footer = () => (
                 <ul className="mt-5 flex flex-col gap-3.5">
                   {links.map((link) => (
                     <li key={link}>
-                      <a
+                      {pageLinks[link] ? <Link to={pageLinks[link]} className={`rounded text-[13px] text-white/85 transition-colors hover:text-white ${focusRing}`}>{link}</Link> : <a
                         href="#"
                         className={`rounded text-[13px] text-white/85 transition-colors hover:text-white ${focusRing}`}
                       >
                         {link}
-                      </a>
+                      </a>}
                     </li>
                   ))}
                 </ul>

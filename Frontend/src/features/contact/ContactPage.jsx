@@ -1,26 +1,16 @@
-import SectionHeading from "@/shared/SectionHeading";
-import ContactForm from "./components/ContactForm";
-import ContactInfo from "./components/ContactInfo";
-import ContactMap from "./components/ContactMap";
+import PageHeader from "@/components/shared/PageHeader";
+import CtaBanner from "@/components/shared/CtaBanner";
+import ContactSection from "./components/ContactSection";
+import DealershipsSection from "./components/DealershipsSection";
+import ContactFaqSection from "./components/ContactFaqSection";
 
 const ContactPage = () => (
-  <section
-    aria-labelledby="contact-title"
-    className="bg-neutral-50 px-4 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40"
-  >
-    <div className="mx-auto max-w-[1400px]">
-      <SectionHeading
-        id="contact-title"
-        eyebrow="Contact"
-        lead={["Let's talk"]}
-        muted={["about your next car"]}
-      />
-      <ContactForm />
-      <ContactInfo />
-      <ContactMap />
-    </div>
-  </section>
+  <>
+    <PageHeader title="Contact us" breadcrumb="Contact" eyebrow="The conversation starts here" description="A question about a car, a plan for your next drive, or a little advice. Let’s find your next step together." />
+    <ContactSection />
+    <DealershipsSection />
+    <ContactFaqSection />
+    <CtaBanner heading="Something catch your eye?" text="Explore the collection, build your shortlist and find the car you’d like to see up close." buttonLabel="Browse inventory" href="/inventory" />
+  </>
 );
-
 export default ContactPage;
-
