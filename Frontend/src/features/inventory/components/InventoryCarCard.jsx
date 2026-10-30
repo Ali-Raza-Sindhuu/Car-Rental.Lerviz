@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Fuel, Gauge, Settings2, Zap } from "lucide-react";
+import VehicleImage from "@/components/shared/VehicleImage";
 
 // Change this once the car details route exists.
 const getCarHref = (car) => `/inventory/${car.id}`;
@@ -51,7 +52,7 @@ const InventoryCarCard = ({ car, layout = "grid" }) => {
           isList ? "sm:w-[38%] sm:shrink-0" : ""
         }`}
       >
-        <img
+        <VehicleImage
           src={car.image}
           alt={`${name} ${car.yearRange}`}
           loading="lazy"

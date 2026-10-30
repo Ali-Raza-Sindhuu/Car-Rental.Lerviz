@@ -7,6 +7,7 @@ import CarouselArrows from "@/shared/CarouselArrows";
 import { Reveal } from "@/shared/motion";
 import SectionHeading, { Eyebrow } from "@/shared/SectionHeading";
 import { btn, focusRing } from "@/shared/styles";
+import VehicleImage from "@/components/shared/VehicleImage";
 import { useCarousel } from "@/shared/useCarousel";
 
 const stats = [
@@ -100,7 +101,7 @@ const ShowcaseSection = () => {
                 key={id}
                 className="aspect-[16/9] w-[88%] shrink-0 snap-start overflow-hidden rounded-xl bg-neutral-900 md:w-[68%]"
               >
-                <img
+                <VehicleImage
                   src={image}
                   alt={alt}
                   loading="lazy"

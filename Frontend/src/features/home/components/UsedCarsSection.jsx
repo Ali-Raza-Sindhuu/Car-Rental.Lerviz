@@ -25,6 +25,11 @@ const avatars = [
   { src: "/image/search/avatar-3.jpg", color: "bg-rose-200" },
 ];
 
+const CustomerAvatar = ({ src, color }) => {
+  const [failed, setFailed] = useState(false);
+  return failed ? <span aria-hidden="true" className={`size-7 rounded-full border-2 border-white ${color}`} /> : <img src={src} alt="" loading="lazy" onError={() => setFailed(true)} className={`size-7 rounded-full border-2 border-white object-cover ${color}`} />;
+};
+
 const recentSearches = ["Sylhet, BD", "Habiganj, Bangladesh", "Khulna"];
 
 const MAP_BLOCKS = [
@@ -177,7 +182,7 @@ const UsedCarsSection = () => (
             <div className="mt-2 flex items-center gap-3">
               <div className="flex -space-x-2">
                 {avatars.map(({ src, color }) => (
-                  <img
+                  <CustomerAvatar
                     key={src}
                     src={src}
                     alt=""
