@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight, SearchX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/shared/PageHeader";
+import heroImage from "@/assets/404_hero.png";
 
 const NotFoundPage = ({ error = false }) => (
   <>
-    <PageHeader title={error ? "Something went wrong" : "Page not found"} eyebrow={error ? "A short detour" : "404 / Wrong turn"} description={error ? "We couldn't open this page. Choose a destination below to continue." : "That route isn't on the map. Your next drive is still waiting."} />
+    <PageHeader title={error ? "Something went wrong" : "Page not found"} eyebrow={error ? "A short detour" : "404 / Wrong turn"} description={error ? "We couldn't open this page. Choose a destination below to continue." : "That route isn't on the map. Your next drive is still waiting."} heroImage={heroImage} />
     <section className="bg-neutral-50 px-4 py-16 md:px-12 md:py-24">
       <div className="mx-auto flex max-w-[1400px] flex-col items-center rounded-2xl border border-neutral-200 bg-white px-6 py-16 text-center">
         <SearchX aria-hidden="true" className="size-8 text-neutral-500" />

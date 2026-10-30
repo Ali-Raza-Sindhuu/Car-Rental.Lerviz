@@ -4,8 +4,8 @@ import { focusRing } from "@/shared/styles";
 const details = [
   { title: "Call the showroom", Icon: Phone, text: "+1 202 555 0142", href: "tel:+12025550142", note: "Discuss a vehicle or arrange a visit." },
   { title: "Write to us", Icon: Mail, text: "hello@revex.example.com", href: "mailto:hello@revex.example.com", note: "A place for every question." },
-  { title: "Visit the flagship", Icon: MapPin, text: "100 Example Avenue, Example City", note: "Arrange a viewing before you travel." },
-  { title: "Opening hours", Icon: Clock, text: "Mon–Sat, 9am–6pm", note: "Sunday by appointment." },
+  { title: "REVEX Downtown", Icon: MapPin, text: "100 Example Avenue, Example City, EX 10001", note: "Arrange a viewing before you travel." },
+  { title: "Opening hours", Icon: Clock, text: "Mon–Sat 9:00–19:00, Sun 10:00–16:00", note: "REVEX Downtown." },
 ];
 const ContactInfo = () => (
   <aside aria-labelledby="contact-info-title" className="min-w-0">
@@ -33,4 +33,3 @@ const ContactInfo = () => (
   </aside>
 );
 export default ContactInfo;
-

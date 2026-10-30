@@ -1,69 +1,7 @@
-# Car details asset manifest
+# Inventory image assets
 
-All requested files are optional until supplied. URLs omit the Vite public directory prefix. Place corresponding files under Frontend/public/image/inventory/details/. Slot 01 falls back to car.image; any remaining failure displays a neutral car placeholder.
+Inventory vehicle images are bundled from `src/assets/` through the explicit imports in `src/features/inventory/data/carImages.js`.
 
-- /image/inventory/details/bmw-i8-2022-01.png
-- /image/inventory/details/bmw-i8-2022-02.png
-- /image/inventory/details/bmw-i8-2022-03.png
-- /image/inventory/details/bmw-i8-2022-04.png
-- /image/inventory/details/chevrolet-camaro-ss-2019-01.png
-- /image/inventory/details/chevrolet-camaro-ss-2019-02.png
-- /image/inventory/details/chevrolet-camaro-ss-2019-03.png
-- /image/inventory/details/chevrolet-camaro-ss-2019-04.png
-- /image/inventory/details/chevrolet-camaro-rs-2023-01.png
-- /image/inventory/details/chevrolet-camaro-rs-2023-02.png
-- /image/inventory/details/chevrolet-camaro-rs-2023-03.png
-- /image/inventory/details/chevrolet-camaro-rs-2023-04.png
-- /image/inventory/details/bmw-m2-competition-2022-01.png
-- /image/inventory/details/bmw-m2-competition-2022-02.png
-- /image/inventory/details/bmw-m2-competition-2022-03.png
-- /image/inventory/details/bmw-m2-competition-2022-04.png
-- /image/inventory/details/toyota-hilux-2023-01.png
-- /image/inventory/details/toyota-hilux-2023-02.png
-- /image/inventory/details/toyota-hilux-2023-03.png
-- /image/inventory/details/toyota-hilux-2023-04.png
-- /image/inventory/details/mercedes-e-class-2019-01.png
-- /image/inventory/details/mercedes-e-class-2019-02.png
-- /image/inventory/details/mercedes-e-class-2019-03.png
-- /image/inventory/details/mercedes-e-class-2019-04.png
-- /image/inventory/details/porsche-911-carrera-2022-01.png
-- /image/inventory/details/porsche-911-carrera-2022-02.png
-- /image/inventory/details/porsche-911-carrera-2022-03.png
-- /image/inventory/details/porsche-911-carrera-2022-04.png
-- /image/inventory/details/toyota-land-cruiser-2021-01.png
-- /image/inventory/details/toyota-land-cruiser-2021-02.png
-- /image/inventory/details/toyota-land-cruiser-2021-03.png
-- /image/inventory/details/toyota-land-cruiser-2021-04.png
-- /image/inventory/details/land-rover-defender-90-2022-01.png
-- /image/inventory/details/land-rover-defender-90-2022-02.png
-- /image/inventory/details/land-rover-defender-90-2022-03.png
-- /image/inventory/details/land-rover-defender-90-2022-04.png
-- /image/inventory/details/tesla-model-3-2023-01.png
-- /image/inventory/details/tesla-model-3-2023-02.png
-- /image/inventory/details/tesla-model-3-2023-03.png
-- /image/inventory/details/tesla-model-3-2023-04.png
-- /image/inventory/details/audi-a4-avant-2020-01.png
-- /image/inventory/details/audi-a4-avant-2020-02.png
-- /image/inventory/details/audi-a4-avant-2020-03.png
-- /image/inventory/details/audi-a4-avant-2020-04.png
-- /image/inventory/details/honda-civic-2021-01.png
-- /image/inventory/details/honda-civic-2021-02.png
-- /image/inventory/details/honda-civic-2021-03.png
-- /image/inventory/details/honda-civic-2021-04.png
-- /image/inventory/details/ford-mustang-gt-convertible-2020-01.png
-- /image/inventory/details/ford-mustang-gt-convertible-2020-02.png
-- /image/inventory/details/ford-mustang-gt-convertible-2020-03.png
-- /image/inventory/details/ford-mustang-gt-convertible-2020-04.png
-- /image/inventory/details/volkswagen-golf-gti-2022-01.png
-- /image/inventory/details/volkswagen-golf-gti-2022-02.png
-- /image/inventory/details/volkswagen-golf-gti-2022-03.png
-- /image/inventory/details/volkswagen-golf-gti-2022-04.png
-- /image/inventory/details/bmw-x5-2021-01.png
-- /image/inventory/details/bmw-x5-2021-02.png
-- /image/inventory/details/bmw-x5-2021-03.png
-- /image/inventory/details/bmw-x5-2021-04.png
-- /image/inventory/details/mazda-mx-5-2022-01.png
-- /image/inventory/details/mazda-mx-5-2022-02.png
-- /image/inventory/details/mazda-mx-5-2022-03.png
-- /image/inventory/details/mazda-mx-5-2022-04.png
+That module is the source of truth for card images and detail galleries. Each gallery starts with its card image and includes only additional supplied images; available files do not provide dedicated side, rear, or interior views for every vehicle. Some vehicles therefore use a reused or related image as recorded in the approved mapping.
 
+Do not use public-root paths for vehicle images. Add supplied image imports and update the corresponding car entry in `carImages.js` instead.

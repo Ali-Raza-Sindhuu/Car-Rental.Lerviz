@@ -4,9 +4,9 @@ import SectionHeading from "@/shared/SectionHeading";
 import ContactMap from "./ContactMap";
 
 const branches = [
-  { name: "Central flagship", address: "100 Example Avenue, Example City", hours: "Mon–Sat, 9am–6pm · Sun by appointment" },
-  { name: "North showroom", address: "200 Sample Road, Example City", hours: "Mon–Sat, 9am–6pm · Closed Sunday" },
-  { name: "West service centre", address: "300 Demo Lane, Example City", hours: "Mon–Fri, 8am–6pm · Sat, 9am–1pm" },
+  { name: "REVEX Downtown", address: "100 Example Avenue, Example City, EX 10001", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" },
+  { name: "REVEX Riverside", address: "24 Harbour Road, Example City, EX 10024", hours: "Mon–Fri 8:30–18:00, Sat 10:00–16:00" },
+  { name: "REVEX Airport Park", address: "8 Terminal Way, Example City, EX 10088", hours: "Daily 7:00–22:00 (rentals)" },
 ];
 const DealershipsSection = () => (
   <section aria-labelledby="dealerships-title" className="bg-white px-4 py-16 md:px-12 md:py-24">
@@ -29,4 +29,3 @@ const DealershipsSection = () => (
   </section>
 );
 export default DealershipsSection;
-

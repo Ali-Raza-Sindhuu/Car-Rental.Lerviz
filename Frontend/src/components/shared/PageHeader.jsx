@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
-const PageHeader = ({ title, eyebrow, description, breadcrumb = title, breadcrumbs, children }) => (
-  <header className="bg-neutral-900 pt-32 pb-8 md:pt-36 md:pb-10">
-    <div className="mx-auto max-w-[1400px] px-4 md:px-12">
+const PageHeader = ({ title, eyebrow, description, breadcrumb = title, breadcrumbs, heroImage, children }) => (
+  <header className="relative isolate overflow-hidden bg-neutral-900 pt-32 pb-8 md:pt-36 md:pb-10">
+    {heroImage && (
+      <>
+        <img src={heroImage} alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover object-[70%_center]" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-neutral-950/95 via-neutral-900/75 to-neutral-900/45" />
+      </>
+    )}
+    <div className="relative mx-auto max-w-[1400px] px-4 md:px-12">
       <nav aria-label="Breadcrumb">
         <ol className="flex flex-wrap items-center gap-1.5 text-[11px] text-white/60">
           {(breadcrumbs ?? [{ label: "Home", to: "/" }, { label: breadcrumb }]).map((item, index, items) => (
@@ -24,4 +30,3 @@ const PageHeader = ({ title, eyebrow, description, breadcrumb = title, breadcrum
   </header>
 );
 export default PageHeader;
-

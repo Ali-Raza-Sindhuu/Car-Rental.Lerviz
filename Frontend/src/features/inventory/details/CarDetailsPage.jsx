@@ -16,6 +16,7 @@ import SimilarVehicles from "./components/SimilarVehicles";
 import VehicleFaqSection from "./components/VehicleFaqSection";
 import MobileActionBar from "./components/MobileActionBar";
 import CtaBanner from "@/components/shared/CtaBanner";
+import heroImage from "@/assets/inventory_hero.png";
 
 const CarDetailsPage = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const CarDetailsPage = () => {
 
   if (!car || !details) return (
     <>
-      <PageHeader title="Vehicle not found" eyebrow="A different road ahead" description="This vehicle may have moved on, or the link may be incorrect." breadcrumbs={[{ label: "Home", to: "/" }, { label: "Inventory", to: "/inventory" }, { label: "Vehicle not found" }]} />
+      <PageHeader title="Vehicle not found" eyebrow="A different road ahead" description="This vehicle may have moved on, or the link may be incorrect." breadcrumbs={[{ label: "Home", to: "/" }, { label: "Inventory", to: "/inventory" }, { label: "Vehicle not found" }]} heroImage={heroImage} />
       <section className="bg-neutral-50 px-4 py-16 md:px-12 md:py-24">
         <div className="mx-auto flex max-w-[1400px] flex-col items-center rounded-2xl border border-neutral-200 bg-white px-6 py-16 text-center">
           <SearchX aria-hidden="true" className="size-8 text-neutral-500" />
@@ -45,7 +46,7 @@ const CarDetailsPage = () => {
 
   return (
     <>
-      <PageHeader title={`${name} [${car.yearRange}]`} eyebrow="Find your next chapter" description={`${car.bodyType} · ${car.fuel} · ${car.transmission}`} breadcrumbs={[{ label: "Home", to: "/" }, { label: "Inventory", to: "/inventory" }, { label: name }]}>
+      <PageHeader title={`${name} [${car.yearRange}]`} eyebrow="Find your next chapter" description={`${car.bodyType} · ${car.fuel} · ${car.transmission}`} breadcrumbs={[{ label: "Home", to: "/" }, { label: "Inventory", to: "/inventory" }, { label: name }]} heroImage={heroImage}>
         <div className="mt-5 flex flex-wrap gap-2"><span className="rounded-full bg-white px-3 py-1.5 text-[11px] font-medium text-neutral-900">{car.condition === "new" ? "New Car" : "Used Car"}</span>{car.listingType === "rent" && <span className="rounded-full bg-[#f05a1a] px-3 py-1.5 text-[11px] font-medium text-white">For rent</span>}</div>
       </PageHeader>
       <div key={car.id} className="bg-neutral-50 px-4 py-16 md:px-12 md:py-24">
@@ -74,4 +75,3 @@ const CarDetailsPage = () => {
   );
 };
 export default CarDetailsPage;
-

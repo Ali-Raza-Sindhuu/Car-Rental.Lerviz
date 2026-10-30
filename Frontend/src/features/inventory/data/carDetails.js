@@ -1,4 +1,5 @@
 import { CARS } from "./cars";
+import { CAR_IMAGES } from "./carImages";
 
 // ALL values below are illustrative sample data, not verified vehicle specifications.
 // Existing inventory year/model combinations are preserved unchanged.
@@ -226,6 +227,174 @@ const profiles = {
       "Folding soft top",
       "Limited-slip differential"
     ]
+  },
+  "ferrari-roma-2021": {
+    torque: 760,
+    zeroToHundred: 3.4,
+    topSpeed: 320,
+    drivetrain: "Rear-wheel drive",
+    doors: 2,
+    seats: 4,
+    interiorColour: "Tan",
+    description: "A front-engined grand touring coupe with a twin-turbo V8 and a carefully finished cabin. This sample listing pairs striking performance with room for a weekend away.",
+    features: ["Manettino drive modes", "Adaptive suspension"],
+    dealer: { name: "REVEX Downtown", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" }
+  },
+  "nissan-gt-r-2020": {
+    torque: 633,
+    zeroToHundred: 2.9,
+    topSpeed: 315,
+    drivetrain: "All-wheel drive",
+    doors: 2,
+    seats: 4,
+    interiorColour: "Black",
+    description: "A high-performance coupe with all-wheel-drive traction and a cockpit designed around the driver. This used sample offers a focused sports-car experience.",
+    features: ["Launch control", "Brembo performance brakes"],
+    dealer: { name: "REVEX Riverside", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Fri 8:30–18:00, Sat 10:00–16:00" }
+  },
+  "hyundai-ioniq-5-2023": {
+    torque: 605,
+    zeroToHundred: 5.2,
+    topSpeed: 185,
+    drivetrain: "All-wheel drive",
+    doors: 5,
+    seats: 5,
+    interiorColour: "Charcoal",
+    description: "A spacious electric crossover with a flat floor, a quiet cabin and quick charging capability. This new sample vehicle is suited to everyday journeys and longer drives.",
+    features: ["Regenerative braking", "Vehicle-to-load power"],
+    dealer: { name: "REVEX Airport Park", city: "Example City", phone: "+1 202 555 0142", hours: "Daily 7:00–22:00 (rentals)" }
+  },
+  "kia-sportage-2022": {
+    torque: 350,
+    zeroToHundred: 8.0,
+    topSpeed: 193,
+    drivetrain: "All-wheel drive",
+    doors: 5,
+    seats: 5,
+    interiorColour: "Black",
+    description: "A practical hybrid SUV with a comfortable driving position, useful cargo space and a flexible cabin. Its sample equipment makes it a well-rounded choice for family trips.",
+    features: ["Smart cruise control", "Heated front seats"],
+    dealer: { name: "REVEX Downtown", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" }
+  },
+  "toyota-corolla-2021": {
+    torque: 142,
+    zeroToHundred: 10.9,
+    topSpeed: 180,
+    drivetrain: "Front-wheel drive",
+    doors: 4,
+    seats: 5,
+    interiorColour: "Black",
+    description: "A dependable hybrid sedan with a quiet cabin and straightforward controls. This sample listing offers a comfortable, efficient option for commuting and city errands.",
+    features: ["Adaptive cruise control", "Lane-tracing assist"],
+    dealer: { name: "REVEX Riverside", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Fri 8:30–18:00, Sat 10:00–16:00" }
+  },
+  "mercedes-g-class-2022": {
+    torque: 850,
+    zeroToHundred: 4.5,
+    topSpeed: 220,
+    drivetrain: "All-wheel drive",
+    doors: 5,
+    seats: 5,
+    interiorColour: "Black",
+    description: "A distinctive luxury SUV with a commanding view of the road, a premium cabin and serious off-road hardware. This rental sample combines presence with modern comfort.",
+    features: ["Three locking differentials", "Adaptive damping"],
+    dealer: { name: "REVEX Airport Park", city: "Example City", phone: "+1 202 555 0142", hours: "Daily 7:00–22:00 (rentals)" }
+  },
+  "audi-rs6-avant-2021": {
+    torque: 800,
+    zeroToHundred: 3.6,
+    topSpeed: 280,
+    drivetrain: "All-wheel drive",
+    doors: 5,
+    seats: 5,
+    interiorColour: "Black",
+    description: "A performance wagon that pairs a twin-turbo V8 with generous luggage space and a refined cabin. This sample RS6 Avant is equally at home on a long trip or a quiet commute.",
+    features: ["Adaptive air suspension", "Sport differential"],
+    dealer: { name: "REVEX Downtown", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" }
+  },
+  "volvo-v60-2020": {
+    torque: 400,
+    zeroToHundred: 7.9,
+    topSpeed: 220,
+    drivetrain: "All-wheel drive",
+    doors: 5,
+    seats: 5,
+    interiorColour: "Charcoal",
+    description: "A restrained estate car with supportive seats, balanced road manners and room for everyday gear. This diesel sample is suited to relaxed, longer-distance driving.",
+    features: ["Pilot Assist", "Powered tailgate"],
+    dealer: { name: "REVEX Riverside", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Fri 8:30–18:00, Sat 10:00–16:00" }
+  },
+  "ford-f-150-raptor-2022": {
+    torque: 691,
+    zeroToHundred: 5.5,
+    topSpeed: 180,
+    drivetrain: "Four-wheel drive",
+    doors: 4,
+    seats: 5,
+    interiorColour: "Black",
+    description: "A wide-track pickup with long-travel suspension, a spacious double cab and ample utility. This new sample vehicle is built for demanding roads and outdoor weekends.",
+    features: ["Selectable terrain modes", "Off-road suspension"],
+    dealer: { name: "REVEX Downtown", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" }
+  },
+  "mazda-mx-5-rf-2021": {
+    torque: 205,
+    zeroToHundred: 6.8,
+    topSpeed: 215,
+    drivetrain: "Rear-wheel drive",
+    doors: 2,
+    seats: 2,
+    interiorColour: "Black",
+    description: "A compact roadster with a retractable hardtop, direct steering and an engaging manual gearbox. This rental sample is a natural fit for a scenic drive.",
+    features: ["Retractable hardtop", "Limited-slip differential"],
+    dealer: { name: "REVEX Airport Park", city: "Example City", phone: "+1 202 555 0142", hours: "Daily 7:00–22:00 (rentals)" }
+  },
+  "bmw-z4-m40i-2022": {
+    torque: 500,
+    zeroToHundred: 4.5,
+    topSpeed: 250,
+    drivetrain: "Rear-wheel drive",
+    doors: 2,
+    seats: 2,
+    interiorColour: "Magma Red",
+    description: "A two-seat convertible with a turbocharged six-cylinder engine and a power-operated soft top. This new sample balances open-air touring with confident performance.",
+    features: ["Adaptive M suspension", "Power soft top"],
+    dealer: { name: "REVEX Downtown", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" }
+  },
+  "volkswagen-polo-2019": {
+    torque: 175,
+    zeroToHundred: 10.8,
+    topSpeed: 187,
+    drivetrain: "Front-wheel drive",
+    doors: 5,
+    seats: 5,
+    interiorColour: "Grey",
+    description: "A compact hatchback with easy-to-use controls, a practical boot and a manual gearbox. This used sample is an approachable companion for urban driving.",
+    features: ["Front assist", "Rear parking sensors"],
+    dealer: { name: "REVEX Riverside", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Fri 8:30–18:00, Sat 10:00–16:00" }
+  },
+  "porsche-taycan-2023": {
+    torque: 650,
+    zeroToHundred: 4.8,
+    topSpeed: 230,
+    drivetrain: "All-wheel drive",
+    doors: 4,
+    seats: 4,
+    interiorColour: "Slate Grey",
+    description: "An electric sports sedan with immediate acceleration, composed handling and a carefully appointed interior. This new sample is designed for quiet daily use and confident longer journeys.",
+    features: ["Adaptive air suspension", "Regenerative braking"],
+    dealer: { name: "REVEX Downtown", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" }
+  },
+  "range-rover-sport-2020": {
+    torque: 700,
+    zeroToHundred: 6.9,
+    topSpeed: 209,
+    drivetrain: "All-wheel drive",
+    doors: 5,
+    seats: 5,
+    interiorColour: "Ebony",
+    description: "A refined diesel SUV with a raised driving position, supportive seats and versatile cargo room. This rental sample is suited to comfortable touring and varied road conditions.",
+    features: ["Terrain response", "Electronic air suspension"],
+    dealer: { name: "REVEX Airport Park", city: "Example City", phone: "+1 202 555 0142", hours: "Daily 7:00–22:00 (rentals)" }
   }
 };
 
@@ -238,8 +407,8 @@ export const CAR_DETAILS = Object.fromEntries(CARS.map((car, index) => {
     ownershipHistory: car.condition === "new" ? "Unregistered sample vehicle" : "Two previous keepers; sample history, documents to be verified",
     warranty: "Sample 12-month cover; eligibility and terms unconfirmed",
     vin: `SAMPLE-VIN-${String(index + 1).padStart(6, "0")}`,
-    dealer: { name: "REVEX Example Motors", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat, 9am–6pm (sample hours)" },
-    gallery: Array.from({ length: 4 }, (_, photo) => `/image/inventory/details/${car.id}-${String(photo + 1).padStart(2, "0")}.png`),
+    dealer: profile.dealer ?? { name: "REVEX Downtown", city: "Example City", phone: "+1 202 555 0142", hours: "Mon–Sat 9:00–19:00, Sun 10:00–16:00" },
+    gallery: CAR_IMAGES[car.id].gallery,
   }];
 }));
 
@@ -249,4 +418,3 @@ export const getSimilarCars = (car, count = 3) => {
     .sort((first, second) => rank(first) - rank(second))
     .slice(0, Math.max(0, count));
 };
-

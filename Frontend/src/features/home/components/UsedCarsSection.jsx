@@ -30,7 +30,7 @@ const CustomerAvatar = ({ src, color }) => {
   return failed ? <span aria-hidden="true" className={`size-7 rounded-full border-2 border-white ${color}`} /> : <img src={src} alt="" loading="lazy" onError={() => setFailed(true)} className={`size-7 rounded-full border-2 border-white object-cover ${color}`} />;
 };
 
-const recentSearches = ["Sylhet, BD", "Habiganj, Bangladesh", "Khulna"];
+const recentSearches = ["Downtown, Example City", "Riverside, Example City", "Airport Park, Example City"];
 
 const MAP_BLOCKS = [
   [20, 30, 90, 60], [130, 20, 110, 70], [260, 30, 100, 60],

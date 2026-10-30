@@ -7,9 +7,9 @@ import carImage from "@/assets/sample_001.png";
 
 const checks = ["Mechanical condition", "Safety systems", "Interior and exterior", "Available service history"];
 const stats = [
-  { value: "150", unit: "points", label: "Proposed inspection checklist" },
-  { value: "7", unit: "days", label: "Proposed return period" },
-  { value: "12", unit: "months", label: "Proposed warranty term" },
+  { value: "150", unit: "points", label: "Vehicle inspection" },
+  { value: "7", unit: "days", label: "Return period" },
+  { value: "12", unit: "months", label: "Warranty" },
 ];
 
 const InspectionSection = () => (
@@ -17,7 +17,7 @@ const InspectionSection = () => (
     <div className="mx-auto max-w-[1400px]">
       <div className="grid items-end gap-8 lg:grid-cols-2">
         <SectionHeading id="inspection-title" tone="dark" eyebrow="The certified programme" eyebrowClassName="text-white/60" lead={["Confidence starts"]} muted={["with the details."]} />
-        <p className="max-w-md text-sm leading-relaxed text-white/60 lg:ml-auto">A polished finish tells only part of the story. Our proposed certified programme puts condition, documentation and a clear handover at the centre of your decision.</p>
+        <p className="max-w-md text-sm leading-relaxed text-white/60 lg:ml-auto">A polished finish tells only part of the story. Our certified programme puts condition, documentation and a clear handover at the centre of your decision. Home delivery is available within 100 km.</p>
       </div>
       <div className="mt-12 overflow-hidden rounded-3xl bg-white p-4 md:p-6">
         <dl className="grid gap-6 border-b border-neutral-200 pb-6 sm:grid-cols-3">
@@ -40,9 +40,7 @@ const InspectionSection = () => (
           </div>
         </div>
       </div>
-      <p className="mt-5 max-w-3xl text-[11px] leading-relaxed text-white/60">Programme preview: the 150-point check, 7-day return and 12-month warranty are placeholder terms, not confirmed offers. Availability, eligibility and full terms must be confirmed before publication.</p>
     </div>
   </section>
 );
 export default InspectionSection;
-

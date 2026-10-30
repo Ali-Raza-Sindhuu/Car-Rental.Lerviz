@@ -9,10 +9,10 @@ import { focusRing } from "@/shared/styles";
 import { useCarousel } from "@/shared/useCarousel";
 
 const categories = [
-  { name: "SUV", count: 824, image: img1 },
-  { name: "Wagon", count: 624, image: img2 },
-  { name: "Coupe", count: 324, image: img3 },
-  { name: "Convertible", count: 124, image: img4 },
+  { name: "SUV", count: 7, image: img1 },
+  { name: "Wagon", count: 3, image: img2 },
+  { name: "Coupe", count: 7, image: img3 },
+  { name: "Convertible", count: 4, image: img4 },
 ];
 
 const CategorySection = () => {

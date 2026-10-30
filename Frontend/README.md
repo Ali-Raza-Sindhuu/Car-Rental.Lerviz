@@ -29,6 +29,6 @@ Build the production bundle with `npm run build`. Preview it with `npm run previ
 
 `src/features/inventory/data/cars.js` contains the inventory and `carDetails.js` adds illustrative details keyed by car ID. Replace the sample data at this boundary with API responses that preserve the same field names, or map API fields into that shape before rendering. The About timeline, team, contact details, service terms, and review statistics are illustrative too.
 
-Bundled images are imported from `src/assets/`. Root URLs such as `/image/inventory/bmw-i8.png` resolve under `public/image/inventory/`; do not put `/public` in the URL. The full optional details-gallery list is in `src/features/inventory/details/ASSETS.md`. Missing vehicle photos show a neutral placeholder.
+Bundled images are imported from `src/assets/`. `src/features/inventory/data/carImages.js` is the source of truth for inventory card and detail-gallery images; add vehicle image imports and mappings there rather than using public-root image paths. Missing vehicle photos show a neutral placeholder.
 
 Contact and vehicle enquiry forms validate locally only. Newsletter, Google sign-in, and policy links also need real integration or content before launch. See `PLACEHOLDERS.md` for replacement points.

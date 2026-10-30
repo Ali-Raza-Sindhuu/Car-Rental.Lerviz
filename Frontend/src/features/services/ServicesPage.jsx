@@ -1,5 +1,6 @@
 import PageHeader from "@/components/shared/PageHeader";
 import CtaBanner from "@/components/shared/CtaBanner";
+import heroImage from "@/assets/services_hero.png";
 import ServicesGrid from "./components/ServicesGrid";
 import InspectionSection from "./components/InspectionSection";
 import HowItWorksSection from "./components/HowItWorksSection";
@@ -7,7 +8,7 @@ import ServicesFaqSection from "./components/ServicesFaqSection";
 
 const ServicesPage = () => (
   <>
-    <PageHeader title="Our services" breadcrumb="Services" eyebrow="Support for every mile" description="Find your next car, plan a change or take care of the one you love. Start with a conversation." />
+    <PageHeader title="Our services" breadcrumb="Services" eyebrow="Support for every mile" description="Find your next car, plan a change or take care of the one you love. Start with a conversation." heroImage={heroImage} />
     <ServicesGrid />
     <InspectionSection />
     <HowItWorksSection />

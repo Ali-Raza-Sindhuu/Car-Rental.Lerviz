@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import heroImage from "@/assets/inventory_hero.png";
 
 const InventoryHeader = ({ resultCount = 0 }) => {
   const countLabel = `${resultCount} ${resultCount === 1 ? "vehicle" : "vehicles"} available`;
 
   return (
-    <header className="bg-neutral-900 pt-32 pb-8 md:pt-36 md:pb-10">
-      <div className="mx-auto max-w-[1400px] px-4 md:px-12">
+    <header className="relative isolate overflow-hidden bg-neutral-900 pt-32 pb-8 md:pt-36 md:pb-10">
+      <img src={heroImage} alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover object-[70%_center]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-neutral-950/95 via-neutral-900/75 to-neutral-900/45" />
+      <div className="relative mx-auto max-w-[1400px] px-4 md:px-12">
         <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-1.5 text-[11px] text-white/60">
             <li>

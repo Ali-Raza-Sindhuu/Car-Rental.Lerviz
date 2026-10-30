@@ -1,5 +1,6 @@
 import PageHeader from "@/components/shared/PageHeader";
 import CtaBanner from "@/components/shared/CtaBanner";
+import heroImage from "@/assets/about_hero.png";
 import StorySection from "./components/StorySection";
 import ValuesSection from "./components/ValuesSection";
 import NumbersSection from "./components/NumbersSection";
@@ -8,7 +9,7 @@ import TeamSection from "./components/TeamSection";
 
 const AboutPage = () => (
   <>
-    <PageHeader title="About REVEX" breadcrumb="About" eyebrow="Built around the drive" description="A more considered way to find your next car, with people who care about the journey." />
+    <PageHeader title="About REVEX" breadcrumb="About" eyebrow="Built around the drive" description="A more considered way to find your next car, with people who care about the journey." heroImage={heroImage} />
     <StorySection />
     <ValuesSection />
     <NumbersSection />
@@ -18,4 +19,3 @@ const AboutPage = () => (
   </>
 );
 export default AboutPage;
-
