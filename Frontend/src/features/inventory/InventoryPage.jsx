@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import InventoryHeader from "./components/InventoryHeader";
 import SearchFilterBar, { DEFAULT_SEARCH, PRICE_RANGES } from "./components/SearchFilterBar";
 import FilterSidebar, { DEFAULT_FILTERS, countActiveFilters } from "./components/FilterSidebar";
@@ -52,7 +53,11 @@ const filterCars = (cars, search, filters) => {
 };
 
 const InventoryPage = () => {
-  const [search, setSearch] = useState(DEFAULT_SEARCH);
+  const [searchParams] = useSearchParams();
+  const [search, setSearch] = useState(() => ({
+    ...DEFAULT_SEARCH,
+    condition: ["new", "used"].includes(searchParams.get("condition")) ? searchParams.get("condition") : DEFAULT_SEARCH.condition,
+  }));
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [sort, setSort] = useState("newest");
   const [view, setView] = useState("grid");

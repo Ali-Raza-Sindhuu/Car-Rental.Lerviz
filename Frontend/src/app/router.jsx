@@ -12,11 +12,18 @@ import VerifyEmailPage from '@/features/account/VerifyEmailPage'
 import AboutPage from '@/features/about/AboutPage'
 import ServicesPage from '@/features/services/ServicesPage'
 import NotFoundPage from '@/features/not-found/NotFoundPage'
+import RouteErrorPage from '@/features/not-found/RouteErrorPage'
+
+const AuthTitle = ({ title, children }) => {
+  useEffect(() => { document.title = `${title} | REVEX` }, [title])
+  return children
+}
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <RouteErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: 'inventory', element: <InventoryPage /> },
@@ -28,9 +35,10 @@ export const router = createBrowserRouter([
       { path: '*', element: <NotFoundPage /> },
     ],
   },
-  { path: '/login', element: <LoginPage /> },
-  { path: '/signup', element: <SignUpPage /> },
-  { path: '/forgot-password', element: <ForgotPasswordPage /> },
-  { path: '/reset-password', element: <ResetPasswordPage /> },
-  { path: '/verify-email', element: <VerifyEmailPage /> },
+  { path: '/login', element: <AuthTitle title="Log in"><LoginPage /></AuthTitle> },
+  { path: '/signup', element: <AuthTitle title="Sign up"><SignUpPage /></AuthTitle> },
+  { path: '/forgot-password', element: <AuthTitle title="Forgot password"><ForgotPasswordPage /></AuthTitle> },
+  { path: '/reset-password', element: <AuthTitle title="Reset password"><ResetPasswordPage /></AuthTitle> },
+  { path: '/verify-email', element: <AuthTitle title="Verify email"><VerifyEmailPage /></AuthTitle> },
 ])
+import { useEffect } from 'react'

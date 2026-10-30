@@ -114,6 +114,7 @@ const Navbar = () => {
 
   /* ---------- click handling ---------- */
   const handleNavClick = (e, item) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     setMenuOpen(false);
 
@@ -181,7 +182,7 @@ const Navbar = () => {
                     onFocus={() => setHovered(item.key)}
                     onBlur={() => setHovered(null)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative rounded-lg px-3.5 py-1.5 text-sm transition-colors duration-300 focus-visible:outline-none ${
+                    className={`relative rounded-lg px-3.5 py-1.5 text-sm transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f05a1a] ${
                       isActive
                         ? "font-semibold text-neutral-900"
                         : "text-neutral-500 hover:text-neutral-900"

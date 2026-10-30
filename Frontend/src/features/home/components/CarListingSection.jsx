@@ -12,6 +12,14 @@ import SectionHeading from "@/shared/SectionHeading";
 import { focusRing } from "@/shared/styles";
 
 const filterTabs = ["All", "New", "Used"];
+const inventoryIds = {
+  1: "bmw-i8-2022",
+  2: "chevrolet-camaro-ss-2019",
+  3: "chevrolet-camaro-rs-2023",
+  4: "bmw-m2-competition-2022",
+  5: "toyota-hilux-2023",
+  6: "mercedes-e-class-2019",
+};
 
 // Spec order: [engine, power, fuel, transmission]
 const SPEC_META = [
@@ -89,7 +97,7 @@ const CarCard = ({ car, index }) => {
         </div>
 
         <Link
-          to={`/inventory/${car.id}`}
+          to={`/inventory/${inventoryIds[car.id]}`}
           aria-label={`View details for ${car.name}`}
           className={`grid size-10 shrink-0 place-items-center rounded-full border border-neutral-200 text-neutral-950 transition-colors duration-300 group-hover:border-[#f05a1a] group-hover:bg-[#f05a1a] group-hover:text-white ${focusRing}`}
         >

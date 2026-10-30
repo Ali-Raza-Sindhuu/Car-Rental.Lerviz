@@ -37,6 +37,10 @@ const pageLinks = {
   "Service & Maintenance": "/services",
   "Book a Test Drive": "/contact",
   "Find a Dealer": "/contact",
+  "Models": "/inventory",
+  "Browse by Category": "/inventory",
+  "Technology": "/services",
+  "Performance": "/inventory",
 };
 
 const focusRing =
@@ -71,15 +75,14 @@ const Footer = () => (
             <div className="mt-8 flex items-center gap-3">
               <p className="text-[11px] font-semibold text-white">Follow us on</p>
               <div className="flex gap-2">
-                {socialLinks.map(({ label, icon: Icon, href }) => (
-                  <a
+                {socialLinks.map(({ label, icon: Icon }) => (
+                  <span
                     key={label}
-                    href={href}
                     aria-label={label}
                     className={`flex size-7 items-center justify-center rounded-sm border border-white/20 text-white transition-colors hover:bg-white/10 ${focusRing}`}
                   >
                     <Icon className="size-3.5" />
-                  </a>
+                  </span>
                 ))}
               </div>
             </div>
@@ -93,12 +96,7 @@ const Footer = () => (
                 <ul className="mt-5 flex flex-col gap-3.5">
                   {links.map((link) => (
                     <li key={link}>
-                      {pageLinks[link] ? <Link to={pageLinks[link]} className={`rounded text-[13px] text-white/85 transition-colors hover:text-white ${focusRing}`}>{link}</Link> : <a
-                        href="#"
-                        className={`rounded text-[13px] text-white/85 transition-colors hover:text-white ${focusRing}`}
-                      >
-                        {link}
-                      </a>}
+                      {pageLinks[link] ? <Link to={pageLinks[link]} className={`rounded text-[13px] text-white/85 transition-colors hover:text-white ${focusRing}`}>{link}</Link> : <span className="text-[13px] text-white/85">{link}</span>}
                     </li>
                   ))}
                 </ul>
@@ -112,13 +110,12 @@ const Footer = () => (
           <p className="font-medium">2026 © REVEX. All rights reserved.</p>
           <div className="flex gap-6 text-white/70">
             {legalLinks.map((link) => (
-              <a
+              <span
                 key={link}
-                href="#"
                 className={`rounded transition-colors hover:text-white ${focusRing}`}
               >
                 {link}
-              </a>
+              </span>
             ))}
           </div>
         </div>
