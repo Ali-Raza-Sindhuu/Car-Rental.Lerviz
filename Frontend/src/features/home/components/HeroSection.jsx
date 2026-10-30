@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import hero_image from "@/assets/Hero_image.png";
+import heroImage from "@/assets/Hero_image.png";
 import { EASE, Reveal } from "@/shared/motion";
 import SectionHeading from "@/shared/SectionHeading";
 import { btn } from "@/shared/styles";
@@ -12,7 +12,7 @@ const HeroSection = () => {
   return (
     <section className="relative flex min-h-svh w-full flex-col overflow-hidden bg-neutral-900 md:min-h-[780px]">
       <motion.img
-        src={hero_image}
+        src={heroImage}
         alt=""
         initial={reduce ? false : { scale: 1.08 }}
         animate={{ scale: 1 }}

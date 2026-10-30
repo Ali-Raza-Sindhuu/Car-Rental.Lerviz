@@ -1,6 +1,6 @@
 import { Globe } from "lucide-react";
-import first_img from "@/assets/about_01.png";
-import second_img from "@/assets/about_02.png";
+import firstImage from "@/assets/about_01.png";
+import secondImage from "@/assets/about_02.png";
 import { Reveal } from "@/shared/motion";
 import SectionHeading from "@/shared/SectionHeading";
 
@@ -28,7 +28,7 @@ const AboutSection = () => (
           className="min-h-[240px] overflow-hidden rounded-2xl lg:min-h-[300px]"
         >
           <img
-            src={first_img}
+            src={firstImage}
             alt="Grey sports car parked outside a modern building"
             className="size-full object-cover"
           />
@@ -65,7 +65,7 @@ const AboutSection = () => (
           className="relative min-h-[360px] overflow-hidden rounded-2xl md:col-span-2 lg:col-span-1 lg:row-span-2"
         >
           <img
-            src={second_img}
+            src={secondImage}
             alt="Driver at the open trunk of an SUV"
             className="absolute inset-0 size-full object-cover"
           />

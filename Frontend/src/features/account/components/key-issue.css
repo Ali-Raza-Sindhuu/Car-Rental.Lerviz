@@ -1,0 +1,81 @@
+.key-world { --key-orange: #f05a1a; min-height: 100svh; position: relative; isolation: isolate; overflow: clip; color: #171717; background: #f3f2ed; font-family: var(--font-sans); }
+.key-world * { box-sizing: border-box; }
+.key-world a, .key-world button, .key-world input { -webkit-tap-highlight-color: transparent; }
+.key-world :is(a, button, input):focus-visible { outline: 2px solid var(--key-orange); outline-offset: 5px; }
+.garage-shutter { position: absolute; z-index: -1; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 63px, #17171708 63px 64px); mask-image: linear-gradient(#000, transparent 85%); animation: shutter-open 1.3s cubic-bezier(.2,.8,.2,1) both; }
+.key-header { position: relative; z-index: 5; height: 98px; margin: 0 48px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #17171722; }
+.key-logo { font-size: 30px; font-weight: 800; letter-spacing: -2px; line-height: 1; text-decoration: none; }
+.key-logo > span:first-child { color: var(--key-orange); }
+.key-logo .logo-mark { display: inline-block; margin-left: 4px; vertical-align: top; font-size: 10px; letter-spacing: 0; }
+.key-header-caption, .key-kicker, .garage-annotation, .bay-marker p, .key-footer, .key-fob-base, .fob-overline { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; letter-spacing: .12em; }
+.key-header-caption { position: absolute; left: 50%; transform: translateX(-50%); color: #737373; }
+.key-exit { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; }
+.garage-stage { position: relative; display: grid; grid-template-columns: 1fr 430px 1fr; align-items: center; gap: 65px; max-width: 1296px; margin: auto; padding: 72px 36px 58px; min-height: 795px; }
+.garage-intro { align-self: start; padding-top: 72px; }
+.key-kicker { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.key-kicker > span { width: 6px; height: 6px; background: var(--key-orange); }
+.garage-intro h1 { margin: 27px 0 24px; font-size: clamp(40px, 4.5vw, 67px); line-height: .99; letter-spacing: -.065em; font-weight: 600; }
+.garage-intro h1 em { font-style: normal; color: var(--key-orange); }
+.garage-description { font-size: 13px; line-height: 1.9; color: #737373; }
+.garage-annotation { margin-top: 65px; display: flex; align-items: center; gap: 12px; font-size: 8px; color: #737373; }
+.garage-annotation span { width: 30px; height: 1px; background: #a3a3a3; }
+.key-fob { position: relative; z-index: 2; width: 100%; padding: 7px; border: 1px solid #555; border-radius: 66px 66px 78px 78px; color: #fafafa; background: linear-gradient(140deg, #444, #1c1c1c 25%, #272727 65%, #5a5a5a); box-shadow: 0 35px 50px -25px #17171770, inset 0 1px 0 #ffffff50; animation: key-arrive .9s .12s cubic-bezier(.2,.8,.2,1) both; }
+.key-loop { position: relative; width: 90px; height: 27px; margin: 14px auto 17px; padding: 5px; border-radius: 30px; background: linear-gradient(#131313, #656565); box-shadow: 0 1px 0 #ffffff30; }
+.key-loop span { display: block; height: 100%; border-radius: inherit; background: #e7e6e0; box-shadow: inset 0 3px 4px #0005; }
+.key-fob-inner { padding: 28px 32px 30px; background: #202020; border: 1px solid #ffffff13; border-radius: 38px 38px 50px 50px; box-shadow: inset 0 1px 0 #ffffff08; }
+.fob-overline { display: flex; align-items: center; justify-content: space-between; color: #a3a3a3; font-size: 9px; }
+.fob-led { display: inline-flex; align-items: center; gap: 6px; }
+.fob-led::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--key-orange); box-shadow: 0 0 9px #f05a1a60; }
+.is-unlocked .fob-led::before { background: #a3e635; }
+.fob-title { margin: 24px 0 8px; font-size: 29px; line-height: 1.1; font-weight: 500; letter-spacing: -.055em; }
+.fob-subtitle { margin-bottom: 25px; font-size: 12px; line-height: 1.7; color: #a3a3a3; }
+.key-google button { height: 45px; border-color: #ffffff25; border-radius: 8px; background: #303030; color: #fafafa; }
+.key-google button:hover { background: #393939; border-color: #ffffff50; }
+.key-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #a3a3a3; font-size: 10px; }
+.key-divider::before, .key-divider::after { content: ''; height: 1px; flex: 1; background: #ffffff16; }
+.key-fields { display: flex; flex-direction: column; gap: 17px; }
+.key-field label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 10px; font-weight: 600; letter-spacing: .05em; }
+.key-field-number { color: #9a9a9a; font-family: monospace; font-size: 9px; }
+.key-input-wrap { display: flex; align-items: center; border: 1px solid #ffffff20; border-radius: 7px; background: #151515; box-shadow: inset 0 2px 3px #0003; }
+.key-input-wrap:focus-within { border-color: var(--key-orange); }
+.key-input-wrap input { width: 100%; min-width: 0; height: 47px; padding: 0 13px; color: white; font-size: 13px; background: transparent; border: 0; border-radius: inherit; }
+.key-input-wrap input::placeholder { color: #858585; }
+.key-input-wrap button { flex-shrink: 0; padding: 10px; color: #b5b5b5; cursor: pointer; }
+.key-input-wrap:has([aria-invalid=true]) { border-color: #fb927d; }
+.key-error { margin-top: 6px; color: #ffb19f; font-size: 11px; }
+.key-options { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 17px 0 23px; font-size: 10px; color: #c3c3c3; }
+.key-options label { display: flex; gap: 7px; align-items: center; cursor: pointer; }
+.key-options input { accent-color: var(--key-orange); }
+.key-options a { text-decoration: underline; text-underline-offset: 4px; }
+.key-unlock { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 57px; padding: 0 19px; border-radius: 9px; background: var(--key-orange); color: white; box-shadow: inset 0 1px 0 #ffffff40, 0 4px 0 #91330c; font-size: 12px; font-weight: 700; cursor: pointer; }
+.key-unlock:hover { background: #d94e14; }
+.key-unlock:active { transform: translateY(2px); }
+.key-unlock:disabled { cursor: wait; opacity: .7; }
+.key-unlock svg { transition: transform .25s; }
+.key-unlock:hover svg { transform: rotate(-12deg); }
+.key-status { padding: 11px; margin-bottom: 15px; border-left: 2px solid #f05a1a; background: #ffffff08; font-size: 12px; line-height: 1.6; }
+.key-status.is-error { color: #ffb19f; }
+.key-create { margin-top: 24px; text-align: center; color: #a3a3a3; font-size: 11px; }
+.key-create a { margin-left: 5px; color: white; text-decoration: underline; text-underline-offset: 4px; }
+.key-fob-base { display: flex; justify-content: space-between; align-items: center; padding: 20px 35px 18px; color: #aaa; font-size: 8px; }
+.key-fob-base > span:first-child { font-family: var(--font-sans); font-weight: 800; letter-spacing: -.07em; font-size: 15px; color: #bcbcbc; }
+.bay-marker { padding-bottom: 75px; text-align: right; }
+.bay-marker > p:first-child { color: #737373; font-size: 9px; }
+.bay-number { display: block; margin: 10px -6px 0 0; font-size: clamp(100px, 13vw, 186px); line-height: 1.1; letter-spacing: -.09em; font-weight: 800; color: transparent; -webkit-text-stroke: 1px #a7a69f; }
+.bay-rule { margin: 24px 0 20px auto; width: 56px; height: 4px; background: var(--key-orange); }
+.bay-marker .bay-label { line-height: 1.8; font-size: 9px; color: #737373; }
+.bay-key { margin: 50px 0 0 auto; color: #a7a69f; }
+.parking-lines { position: absolute; z-index: -1; inset: auto 15% 28px; height: 120px; display: flex; justify-content: space-between; pointer-events: none; }
+.parking-lines span { width: 18%; border-bottom: 2px solid #d9d8d0; }
+.parking-lines span:first-child { border-left: 2px solid #d9d8d0; transform: skewX(-25deg); }
+.parking-lines span:last-child { border-right: 2px solid #d9d8d0; transform: skewX(25deg); }
+.key-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 0 48px; padding: 26px 0; border-top: 1px solid #17171722; color: #737373; font-size: 9px; }
+.key-footer > div { display: flex; gap: 15px; letter-spacing: 0; font-family: var(--font-sans); font-size: 11px; }
+.key-footer a:hover { color: #171717; }
+@keyframes shutter-open { from { transform: translateY(110px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes key-arrive { from { transform: translateY(22px) rotate(-3deg); opacity: 0; } to { transform: translateY(0) rotate(0); opacity: 1; } }
+@media (min-width: 1440px) { .garage-stage { min-height: calc(100svh - 166px); } }
+@media (max-width: 1100px) { .garage-stage { grid-template-columns: 1fr 400px 1fr; gap: 25px; padding-inline: 28px; } .garage-annotation { font-size: 7px; } .key-kicker { font-size: 8px; } .garage-intro h1 { font-size: 45px; } }
+@media (max-width: 850px) { .key-header { margin: 0 28px; height: 84px; } .key-header-caption { display: none; } .garage-stage { grid-template-columns: 1fr; gap: 28px; padding: 34px 24px 46px; min-height: auto; } .garage-intro { padding: 0; text-align: center; } .key-kicker { justify-content: center; font-size: 9px; } .garage-intro h1 { margin: 15px 0 0; font-size: 42px; } .garage-intro h1 br { display: none; } .garage-intro h1 br::after { content: ' '; } .garage-intro h1 em { margin-left: .2em; } .garage-description, .garage-annotation { display: none; } .key-fob { max-width: 430px; margin: 0 auto; } .bay-marker { display: none; } .key-footer { margin: 0 28px; } .key-footer-edition { display: none; } }
+@media (max-width: 480px) { .key-header { margin: 0 20px; height: 76px; } .key-logo { font-size: 26px; } .key-exit { font-size: 10px; gap: 5px; } .garage-stage { padding: 27px 16px 30px; gap: 24px; } .garage-intro h1 { font-size: 35px; letter-spacing: -.06em; } .key-fob { border-radius: 52px 52px 60px 60px; padding: 6px; } .key-fob-inner { padding: 25px 23px 26px; border-radius: 32px 32px 40px 40px; } .key-loop { margin-top: 10px; margin-bottom: 13px; height: 24px; width: 78px; } .fob-title { font-size: 27px; margin-top: 20px; } .key-fob-base { padding: 18px 24px 15px; } .key-footer { margin: 0 20px; padding: 22px 0; gap: 12px; } .key-footer-note { font-size: 7px; } .parking-lines { display: none; } }
+@media (prefers-reduced-motion: reduce) { .key-world *, .key-world *::before, .key-world *::after { animation: none !important; transition: none !important; } }

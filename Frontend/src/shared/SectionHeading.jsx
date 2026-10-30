@@ -1,4 +1,4 @@
-import { Reveal, Wipe } from "./motion";
+import { Reveal } from "./motion";
 
 const SIZES = {
   section: "text-4xl md:text-5xl",
@@ -63,18 +63,10 @@ const SectionHeading = ({
         className={`${eyebrow ? "mt-4" : ""} font-bold leading-[1.05] tracking-tighter ${SIZES[size]} ${t.title}`}
       >
         {lead.map((line, i) => (
-          <Wipe key={line} delay={delay + 0.1 + i * 0.12} className="block">
-            {line}
-          </Wipe>
+          <span key={`${line}-${i}`} className="block">{line}</span>
         ))}
         {muted.map((line, i) => (
-          <Wipe
-            key={line}
-            delay={delay + 0.1 + (lead.length + i) * 0.12}
-            className={`block ${t.muted}`}
-          >
-            {line}
-          </Wipe>
+          <span key={`${line}-${i}`} className={`block ${t.muted}`}>{line}</span>
         ))}
       </Level>
 

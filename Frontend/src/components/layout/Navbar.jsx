@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   AnimatePresence,
@@ -16,51 +16,19 @@ import { useLenis } from "./SmoothScroll";
 /* Config                                                              */
 /* ------------------------------------------------------------------ */
 
-// `hash` items scroll to <section id="..."> on the home page.
 const NAV_ITEMS = [
   { key: "home", label: "Home", to: "/" },
   { key: "inventory", label: "Inventory", to: "/inventory" },
-  { key: "services", label: "Services", to: "/", hash: "services" },
-  { key: "about", label: "About", to: "/", hash: "about" },
+  { key: "services", label: "Services", to: "/services" },
+  { key: "about", label: "About", to: "/about" },
   { key: "contact", label: "Contact", to: "/contact" },
 ];
 
-const SPY_IDS = NAV_ITEMS.filter((i) => i.hash).map((i) => i.hash);
-const SCROLL_OFFSET = -96; // keeps section titles clear of the floating bar
 const EASE = [0.22, 1, 0.36, 1];
 
 /* ------------------------------------------------------------------ */
 /* Scroll spy: which home-page section is in view                      */
 /* ------------------------------------------------------------------ */
-
-const useScrollSpy = (enabled) => {
-  const [active, setActive] = useState(null);
-
-  useEffect(() => {
-    if (!enabled) {
-      setActive(null);
-      return;
-    }
-    const els = SPY_IDS.map((id) => document.getElementById(id)).filter(Boolean);
-
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    els.forEach((el) => observer.observe(el));
-
-    const onScroll = () => window.scrollY < 200 && setActive(null);
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, [enabled]);
-
-  return active;
-};
 
 /* ------------------------------------------------------------------ */
 /* Small pieces                                                        */
@@ -90,7 +58,7 @@ const mobileItem = {
 const Navbar = () => {
   const lenis = useLenis();
   const navigate = useNavigate();
-  const { pathname, hash } = useLocation();
+  const { pathname } = useLocation();
   const reduceMotion = useReducedMotion();
 
   const [scrolled, setScrolled] = useState(false); // compact mode after scrolling
@@ -99,11 +67,12 @@ const Navbar = () => {
   const [hovered, setHovered] = useState(null);
 
   /* ---------- active item ---------- */
-  const spy = useScrollSpy(pathname === "/");
   let activeKey = null;
   if (pathname.startsWith("/inventory")) activeKey = "inventory";
   else if (pathname.startsWith("/contact")) activeKey = "contact";
-  else if (pathname === "/") activeKey = spy ?? "home";
+  else if (pathname === "/services") activeKey = "services";
+  else if (pathname === "/about") activeKey = "about";
+  else if (pathname === "/") activeKey = "home";
   const lit = hovered ?? activeKey;
 
   /* ---------- scroll direction ---------- */
@@ -143,52 +112,17 @@ const Navbar = () => {
     };
   }, [menuOpen, lenis]);
 
-  /* ---------- hash scrolling (works from any page) ---------- */
-  const scrollToId = useCallback(
-    (id) => {
-      const el = document.getElementById(id);
-      if (!el) return false;
-      if (lenis) lenis.scrollTo(el, { offset: SCROLL_OFFSET, duration: 1.4 });
-      else el.scrollIntoView({ behavior: "smooth" });
-      return true;
-    },
-    [lenis]
-  );
-
-  useEffect(() => {
-    if (!hash) return;
-    let tries = 0;
-    let timer;
-    const attempt = () => {
-      if (!scrollToId(hash.slice(1)) && tries++ < 20) {
-        timer = setTimeout(attempt, 50); // wait for the home page to mount
-      }
-    };
-    attempt();
-    return () => clearTimeout(timer);
-  }, [pathname, hash, scrollToId]);
-
   /* ---------- click handling ---------- */
   const handleNavClick = (e, item) => {
     e.preventDefault();
     setMenuOpen(false);
 
-    if (item.hash) {
-      if (pathname === "/") scrollToId(item.hash);
-      navigate(
-        { pathname: "/", hash: `#${item.hash}` },
-        { replace: hash === `#${item.hash}` }
-      );
-      return;
-    }
-    if (item.to === pathname && !hash) {
+    if (item.to === pathname) {
       lenis ? lenis.scrollTo(0, { duration: 1.4 }) : window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     navigate(item.to);
   };
-
-  const hrefFor = (item) => (item.hash ? `/#${item.hash}` : item.to);
 
   return (
     <>
@@ -241,8 +175,8 @@ const Navbar = () => {
                 return (
                   <Link
                     key={item.key}
-                    to={hrefFor(item)}
-                          onClick={(e) => handleNavClick(e, item)}
+                    to={item.to}
+                    onClick={(e) => handleNavClick(e, item)}
                     onMouseEnter={() => setHovered(item.key)}
                     onFocus={() => setHovered(item.key)}
                     onBlur={() => setHovered(null)}
@@ -352,7 +286,7 @@ const Navbar = () => {
                     return (
                       <motion.li key={item.key} variants={mobileItem}>
                         <Link
-                          to={hrefFor(item)}
+                          to={item.to}
                           onClick={(e) => handleNavClick(e, item)}
                           aria-current={isActive ? "page" : undefined}
                           className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-xl tracking-tight transition-colors active:bg-neutral-100 ${
