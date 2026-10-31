@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import AuthShell from "@/features/account/components/AuthShell";
 import GoogleButton, { OrDivider } from "@/features/account/components/GoogleButton";
 import { PrimaryButton } from "@/features/account/components/FormButtons";
 import { emailPattern } from "@/features/account/validation";
-import { authRequest } from "@/features/account/authApi";
+import { authRequest, googleAuthRequest } from "@/features/account/authApi";
+import { setCredentials } from "@/features/account/authSlice";
+import { persistAuth } from "@/features/account/authStorage";
+import { mergeGuestGarageSafely } from "@/features/garage/garageApi";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [values, setValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("");
@@ -26,18 +33,52 @@ const LoginPage = () => {
     if (!emailPattern.test(values.email)) nextErrors.email = "Enter a valid email address";
     if (!values.password) nextErrors.password = "Enter your password";
     setErrors(nextErrors);
-    setStatus("");
     if (Object.keys(nextErrors).length) return;
 
+    setStatus("");
     setIsSubmitting(true);
     try {
       const session = await authRequest("login", values);
-      sessionStorage.setItem("revexAccessToken", session.accessToken);
-      setStatus("You are logged in. Your garage is unlocked.");
+      const token = session.token || session.accessToken;
+      if (!session.user || !token) {
+        throw new Error("The server did not return a user and access token.");
+      }
+      persistAuth(session.user, token);
+      dispatch(setCredentials({ user: session.user, token }));
+      await mergeGuestGarageSafely(token, dispatch);
+      const destination = location.state?.from;
+      navigate(
+        destination?.pathname
+          ? `${destination.pathname}${destination.search || ""}${destination.hash || ""}`
+          : "/profile",
+        { replace: true },
+      );
     } catch (error) {
       setStatus(error.message);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credential) => {
+    setStatus("");
+    try {
+      const session = await googleAuthRequest(credential);
+      if (!session.user || !session.token) {
+        throw new Error("The server did not return a user and access token.");
+      }
+      persistAuth(session.user, session.token);
+      dispatch(setCredentials({ user: session.user, token: session.token }));
+      await mergeGuestGarageSafely(session.token, dispatch);
+      const destination = location.state?.from;
+      navigate(
+        destination?.pathname
+          ? `${destination.pathname}${destination.search || ""}${destination.hash || ""}`
+          : "/profile",
+        { replace: true },
+      );
+    } catch (error) {
+      setStatus(error.message);
     }
   };
 
@@ -48,10 +89,13 @@ const LoginPage = () => {
       headline={<>Good to <br />have you <span className="text-[#f05a1a]">back.</span></>}
       title="Log in to your account"
       subtitle="Pick up where you left off and get back to the cars you love."
-      footer={<>New to REVEX? <Link to="/signup" className="font-semibold text-[#f05a1a] hover:underline">Create an account</Link></>}
+      footer={<>New to REVEX? <Link to="/signup" state={location.state} className="font-semibold text-[#f05a1a] hover:underline">Create an account</Link></>}
     >
       {status && <p role="status" className="mb-4 rounded-lg bg-neutral-100 px-3 py-2.5 text-xs text-neutral-700">{status}</p>}
-      <GoogleButton onClick={() => setStatus("Google sign-in requires a configured Google client.")} />
+      <GoogleButton
+        onCredential={handleGoogleSuccess}
+        onError={setStatus}
+      />
       <OrDivider />
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4" aria-busy={isSubmitting}>
         <div>

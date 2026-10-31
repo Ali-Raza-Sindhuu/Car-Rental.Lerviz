@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   AnimatePresence,
   motion,
@@ -8,9 +9,10 @@ import {
   useScroll,
   useSpring,
 } from "framer-motion";
-import { ArrowRight, Menu, User, X } from "lucide-react";
+import { ArrowRight, Bookmark, CarFront, Menu, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLenis } from "./SmoothScroll";
+import { apiRequest } from "@/lib/api";
 
 /* ------------------------------------------------------------------ */
 /* Config                                                              */
@@ -60,11 +62,22 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const reduceMotion = useReducedMotion();
+  const user = useSelector((state) => state.auth.user);
+  const token = useSelector((state) => state.auth.token);
+  const guestItems = useSelector((state) => state.garage.guestItems);
+  const accountInitial = (user?.name || user?.fullName || user?.email || "?")
+    .trim()
+    .charAt(0)
+    .toUpperCase();
 
   const [scrolled, setScrolled] = useState(false); // compact mode after scrolling
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [hovered, setHovered] = useState(null);
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [serverGarageCount, setServerGarageCount] = useState(0);
+  const [garageCountError, setGarageCountError] = useState("");
+  const garageCount = token ? serverGarageCount : guestItems.length;
 
   /* ---------- active item ---------- */
   let activeKey = null;
@@ -88,7 +101,34 @@ const Navbar = () => {
   /* ---------- reset on route change ---------- */
   useEffect(() => {
     setMenuOpen(false);
+    setAccountOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!token) {
+      setServerGarageCount(0);
+      setGarageCountError("");
+      return undefined;
+    }
+    let active = true;
+    const refresh = () => {
+      apiRequest("/api/cart", { token })
+        .then(({ cart }) => {
+          if (!active) return;
+          setServerGarageCount(cart?.items?.length ?? 0);
+          setGarageCountError("");
+        })
+        .catch((error) => {
+          if (active) setGarageCountError(error.message);
+        });
+    };
+    refresh();
+    window.addEventListener("revex:garage-changed", refresh);
+    return () => {
+      active = false;
+      window.removeEventListener("revex:garage-changed", refresh);
+    };
+  }, [token, pathname, guestItems.length]);
 
   /* ---------- escape closes things ---------- */
   useEffect(() => {
@@ -150,7 +190,7 @@ const Navbar = () => {
               height: scrolled ? 52 : 60,
             }}
             transition={reduceMotion ? { duration: 0 } : { duration: 0.5, ease: EASE }}
-            className={`pointer-events-auto relative mx-auto flex items-center justify-between overflow-hidden rounded-2xl px-4 ring-1 ring-black/5 backdrop-blur-xl transition-[background-color,box-shadow] duration-500 ${
+            className={`pointer-events-auto relative mx-auto flex items-center justify-between overflow-visible rounded-2xl px-4 ring-1 ring-black/5 backdrop-blur-xl transition-[background-color,box-shadow] duration-500 ${
               scrolled
                 ? "bg-white/85 shadow-xl shadow-black/15"
                 : "bg-white shadow-lg shadow-black/10"
@@ -210,6 +250,11 @@ const Navbar = () => {
 
             {/* Actions */}
             <div className="flex items-center gap-2">
+              <Link to="/cart" aria-label={`Garage, ${garageCount} items`} className="hidden h-9 items-center gap-1.5 rounded-lg border border-neutral-200 px-3 text-xs font-medium text-neutral-700 hover:bg-neutral-100 sm:inline-flex">
+                <CarFront aria-hidden="true" className="size-4" />
+                Garage <span className="rounded-full bg-neutral-100 px-1.5 py-0.5 text-[10px]">{garageCount}</span>
+              </Link>
+              <Link to="/saved" className="hidden rounded-lg px-2 py-2 text-xs font-medium text-neutral-700 hover:bg-neutral-100 sm:inline-flex">Saved cars</Link>
               <Button
                 asChild
                 className="group hidden h-9 rounded-lg bg-neutral-900 px-4 text-xs font-semibold text-white hover:bg-neutral-800 sm:inline-flex"
@@ -221,15 +266,27 @@ const Navbar = () => {
               </Button>
 
               {/* Desktop: account */}
-              <Button
-                asChild
-                size="icon"
-                className="hidden size-9 rounded-lg bg-[#f05a1a] text-white hover:bg-[#d94e14] md:inline-flex"
-              >
-                <Link to="/account" aria-label="Account">
-                  <User className="size-4" />
-                </Link>
-              </Button>
+              <div className="relative hidden md:block">
+                {user ? (
+                  <>
+                    <Button type="button" size="icon" aria-label="Account menu" aria-expanded={accountOpen} onClick={() => setAccountOpen((open) => !open)} className="size-9 rounded-full bg-[#f05a1a] text-white hover:bg-[#d94e14]">
+                      <span className="text-sm font-semibold">{accountInitial}</span>
+                    </Button>
+                    <AnimatePresence>
+                      {accountOpen && <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} className="absolute right-0 top-12 z-50 w-56 rounded-xl border border-neutral-200 bg-white p-2 shadow-xl">
+                        <Link to="/profile" className="block rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100">Profile</Link>
+                        <Link to="/saved" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100"><Bookmark className="size-4" />Saved cars</Link>
+                        <Link to="/cart" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100"><span className="flex items-center gap-2"><CarFront className="size-4" />Garage</span><span>{garageCount}</span></Link>
+                        {garageCountError && <p role="status" className="px-3 py-2 text-[11px] text-red-600">Garage count unavailable: {garageCountError}</p>}
+                      </motion.div>}
+                    </AnimatePresence>
+                  </>
+                ) : (
+                  <Button asChild size="icon" className="size-9 rounded-lg bg-[#f05a1a] text-white hover:bg-[#d94e14]">
+                    <Link to="/login" aria-label="Account"><User className="size-4" /></Link>
+                  </Button>
+                )}
+              </div>
 
               {/* Mobile: menu toggle */}
               <Button
@@ -302,6 +359,13 @@ const Navbar = () => {
                       </motion.li>
                     );
                   })}
+                  <motion.li variants={mobileItem} className="px-2 pt-2">
+                    <Link to="/cart" onClick={() => setMenuOpen(false)} className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-neutral-700 hover:bg-neutral-100">
+                      Garage <span className="rounded-full bg-neutral-100 px-2 py-1 text-xs">{garageCount}</span>
+                    </Link>
+                    <Link to="/saved" onClick={() => setMenuOpen(false)} className="mt-1 flex items-center rounded-xl px-4 py-3 text-base font-medium text-neutral-700 hover:bg-neutral-100">Saved cars</Link>
+                    <Link to={user ? "/profile" : "/login"} onClick={() => setMenuOpen(false)} className="mt-1 flex items-center rounded-xl px-4 py-3 text-base font-medium text-neutral-700 hover:bg-neutral-100">{user ? "Profile" : "Log in"}</Link>
+                  </motion.li>
                   <motion.li variants={mobileItem} className="p-2 pt-3">
                     <Button
                       asChild

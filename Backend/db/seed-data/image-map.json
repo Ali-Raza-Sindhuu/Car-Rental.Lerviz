@@ -1,0 +1,126 @@
+{
+  "main:bmw-i8.png": {
+    "publicId": "revex/cars/bmw-i8",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/bmw-i8?_a=BAMAROfo0"
+  },
+  "gallery:bmw-i8.png": {
+    "publicId": "revex/cars/details/bmw-i8",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/bmw-i8?_a=BAMAROfo0"
+  },
+  "main:camaro-ss.png": {
+    "publicId": "revex/cars/camaro-ss",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/camaro-ss?_a=BAMAROfo0"
+  },
+  "gallery:camaro-ss.png": {
+    "publicId": "revex/cars/details/camaro-ss",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/camaro-ss?_a=BAMAROfo0"
+  },
+  "gallery:product_02.png": {
+    "publicId": "revex/cars/details/product_02",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/product_02?_a=BAMAROfo0"
+  },
+  "main:camaro-rs.png": {
+    "publicId": "revex/cars/camaro-rs",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/camaro-rs?_a=BAMAROfo0"
+  },
+  "gallery:camaro-rs.png": {
+    "publicId": "revex/cars/details/camaro-rs",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/camaro-rs?_a=BAMAROfo0"
+  },
+  "gallery:product_03.png": {
+    "publicId": "revex/cars/details/product_03",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/product_03?_a=BAMAROfo0"
+  },
+  "main:bmw-m2.png": {
+    "publicId": "revex/cars/bmw-m2",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/bmw-m2?_a=BAMAROfo0"
+  },
+  "gallery:bmw-m2.png": {
+    "publicId": "revex/cars/details/bmw-m2",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/bmw-m2?_a=BAMAROfo0"
+  },
+  "gallery:product_04.png": {
+    "publicId": "revex/cars/details/product_04",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/product_04?_a=BAMAROfo0"
+  },
+  "main:toyata-hilux.png": {
+    "publicId": "revex/cars/toyata-hilux",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/toyata-hilux?_a=BAMAROfo0"
+  },
+  "gallery:toyata-hilux.png": {
+    "publicId": "revex/cars/details/toyata-hilux",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/toyata-hilux?_a=BAMAROfo0"
+  },
+  "gallery:product_05.png": {
+    "publicId": "revex/cars/details/product_05",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/product_05?_a=BAMAROfo0"
+  },
+  "main:mercedes-e-class.png": {
+    "publicId": "revex/cars/mercedes-e-class",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/mercedes-e-class?_a=BAMAROfo0"
+  },
+  "gallery:mercedes-e-class.png": {
+    "publicId": "revex/cars/details/mercedes-e-class",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/mercedes-e-class?_a=BAMAROfo0"
+  },
+  "gallery:product_06.png": {
+    "publicId": "revex/cars/details/product_06",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/product_06?_a=BAMAROfo0"
+  },
+  "main:porsche-911.png": {
+    "publicId": "revex/cars/porsche-911",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/porsche-911?_a=BAMAROfo0"
+  },
+  "gallery:porsche-911.png": {
+    "publicId": "revex/cars/details/porsche-911",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/porsche-911?_a=BAMAROfo0"
+  },
+  "main:land-cruiser.png": {
+    "publicId": "revex/cars/land-cruiser",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/land-cruiser?_a=BAMAROfo0"
+  },
+  "gallery:land-cruiser.png": {
+    "publicId": "revex/cars/details/land-cruiser",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/land-cruiser?_a=BAMAROfo0"
+  },
+  "main:defender-90.png": {
+    "publicId": "revex/cars/defender-90",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/defender-90?_a=BAMAROfo0"
+  },
+  "gallery:defender-90.png": {
+    "publicId": "revex/cars/details/defender-90",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/defender-90?_a=BAMAROfo0"
+  },
+  "main:tesla-model-3.png": {
+    "publicId": "revex/cars/tesla-model-3",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/tesla-model-3?_a=BAMAROfo0"
+  },
+  "gallery:tesla-model-3.png": {
+    "publicId": "revex/cars/details/tesla-model-3",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/tesla-model-3?_a=BAMAROfo0"
+  },
+  "main:bmw-x5.png": {
+    "publicId": "revex/cars/bmw-x5",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/bmw-x5?_a=BAMAROfo0"
+  },
+  "gallery:bmw-x5.png": {
+    "publicId": "revex/cars/details/bmw-x5",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/bmw-x5?_a=BAMAROfo0"
+  },
+  "main:product_01.png": {
+    "publicId": "revex/cars/product_01",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/product_01?_a=BAMAROfo0"
+  },
+  "gallery:product_01.png": {
+    "publicId": "revex/cars/details/product_01",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/product_01?_a=BAMAROfo0"
+  },
+  "main:range-rover.png": {
+    "publicId": "revex/cars/range-rover",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/range-rover?_a=BAMAROfo0"
+  },
+  "gallery:range-rover.png": {
+    "publicId": "revex/cars/details/range-rover",
+    "secureUrl": "https://res.cloudinary.com/kxlaupmk/image/upload/f_auto,q_auto/v1/revex/cars/details/range-rover?_a=BAMAROfo0"
+  }
+}

@@ -9,6 +9,8 @@ npm install
 npm run dev
 ```
 
+For Google sign-in, copy `.env.example` to `.env.local` and set `VITE_GOOGLE_CLIENT_ID` to the same OAuth client ID configured as `GOOGLE_CLIENT_ID` in the backend. Restart Vite after changing environment variables.
+
 Build the production bundle with `npm run build`. Preview it with `npm run preview`. Run commands from `Frontend/`. A production host must serve `index.html` for unknown paths so React Router can handle direct links.
 
 ## Pages

@@ -1,4 +1,6 @@
 
+import { GoogleLogin } from "@react-oauth/google";
+
 const GoogleIcon = () => (
   <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true">
     <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.8z" />
@@ -8,16 +10,53 @@ const GoogleIcon = () => (
   </svg>
 );
 
-const GoogleButton = ({ label = "Continue with Google", onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-neutral-200 bg-white text-xs font-semibold text-neutral-900 transition hover:border-neutral-300 hover:bg-neutral-50 focus-visible:ring-4 focus-visible:ring-neutral-900/10 focus-visible:outline-none"
-  >
-    <GoogleIcon />
-    {label}
-  </button>
-);
+const GoogleButton = ({ onCredential, onError, label = "Continue with Google" }) => {
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+  if (!clientId) {
+    return (
+      <div>
+        <button
+          type="button"
+          disabled
+          className="flex h-12 w-full cursor-not-allowed items-center justify-center gap-3 rounded-xl border border-neutral-200 bg-white text-xs font-semibold text-neutral-400"
+        >
+          <GoogleIcon />
+          {label}
+        </button>
+        <p role="status" className="mt-2 text-center text-[11px] text-neutral-500">
+          Google sign-in is not configured.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex min-h-12 w-full justify-center">
+      <GoogleLogin
+        onSuccess={(response) => {
+          if (!response.credential) {
+            onError("Google did not provide a sign-in credential. Please try again.");
+            return;
+          }
+          onCredential(response.credential);
+        }}
+        onError={() => onError("Google sign-in failed. Please try again.")}
+        onNonOAuthError={(error) => {
+          onError(
+            error.type === "popup_closed"
+              ? "Google sign-in was cancelled."
+              : "Google sign-in could not be completed. Please try again.",
+          );
+        }}
+        theme="outline"
+        size="large"
+        shape="rectangular"
+        text={label === "Sign up with Google" ? "signup_with" : "continue_with"}
+        width="360"
+      />
+    </div>
+  );
+};
 
 const OrDivider = () => (
   <div className="my-5 flex items-center gap-3 text-[11px] text-neutral-400">

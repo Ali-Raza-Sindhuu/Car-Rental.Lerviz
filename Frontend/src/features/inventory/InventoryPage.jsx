@@ -1,5 +1,6 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { apiRequest } from "@/lib/api";
 import InventoryHeader from "./components/InventoryHeader";
 import SearchFilterBar, { DEFAULT_SEARCH, PRICE_RANGES } from "./components/SearchFilterBar";
 import FilterSidebar, { DEFAULT_FILTERS, countActiveFilters } from "./components/FilterSidebar";
@@ -7,7 +8,7 @@ import ResultsToolbar from "./components/ResultsToolbar";
 import CarListing from "./components/CarListing";
 import Pagination from "./components/Pagination";
 import EmptyState from "./components/EmptyState";
-import { CARS, MAKES, MODELS_BY_MAKE, YEARS } from "./data/cars";
+import { mapCar } from "./data/apiCars";
 import RentCtaBanner from "../home/components/RentBanner";
 
 const PAGE_SIZE = 9;
@@ -64,17 +65,38 @@ const InventoryPage = () => {
   const [page, setPage] = useState(1);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const resultsRef = useRef(null);
+  const [cars, setCars] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [facets, setFacets] = useState({ makes: [], modelsByMake: {}, years: [], bodyTypes: [] });
+  const [loadError, setLoadError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    Promise.all([
+      apiRequest("/api/cars?page=1&pageSize=100", { signal: controller.signal }),
+      apiRequest("/api/cars/facets", { signal: controller.signal }),
+    ]).then(([listing, availableFacets]) => {
+      setCars(listing.items.map(mapCar));
+      setFacets(availableFacets);
+      setLoadError("");
+    }).catch((error) => {
+      if (error.name !== "AbortError") setLoadError(error.message);
+    }).finally(() => {
+      if (!controller.signal.aborted) setIsLoading(false);
+    });
+    return () => controller.abort();
+  }, []);
 
   const filteredCars = useMemo(() => {
-    const matches = filterCars(CARS, search, filters);
+    const matches = filterCars(cars, search, filters);
     return [...matches].sort(SORTERS[sort]);
-  }, [search, filters, sort]);
+  }, [cars, search, filters, sort]);
 
   const totalCount = filteredCars.length;
   const pageCount = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
   const pageCars = filteredCars.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
-  const models = MODELS_BY_MAKE[search.make] ?? [];
+  const models = facets.modelsByMake[search.make] ?? [];
 
   const scrollToResults = () => resultsRef.current?.scrollIntoView();
 
@@ -123,9 +145,9 @@ const InventoryPage = () => {
         onChange={handleSearchChange}
         onReset={resetSearch}
         onSearch={scrollToResults}
-        makes={MAKES}
+        makes={facets.makes}
         models={models}
-        years={YEARS}
+        years={facets.years}
       />
 
       <section
@@ -157,7 +179,13 @@ const InventoryPage = () => {
               />
             </div>
 
-            {totalCount === 0 ? (
+            {loadError ? (
+              <p role="alert" className="rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-700">
+                Unable to load inventory: {loadError}
+              </p>
+            ) : isLoading ? (
+              <p role="status" className="rounded-xl border border-neutral-200 bg-white p-5 text-sm text-neutral-500">Loading inventory…</p>
+            ) : totalCount === 0 ? (
               <EmptyState onClearFilters={clearEverything} />
             ) : (
               <>

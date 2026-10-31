@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import img1 from "@/assets/category_01.png";
 import img2 from "@/assets/category_02.png";
 import img3 from "@/assets/category_03.png";
@@ -7,16 +8,39 @@ import { Reveal } from "@/shared/motion";
 import SectionHeading from "@/shared/SectionHeading";
 import { focusRing } from "@/shared/styles";
 import { useCarousel } from "@/shared/useCarousel";
+import { apiRequest } from "@/lib/api";
 
-const categories = [
-  { name: "SUV", count: 7, image: img1 },
-  { name: "Wagon", count: 3, image: img2 },
-  { name: "Coupe", count: 7, image: img3 },
-  { name: "Convertible", count: 4, image: img4 },
+const categoryImages = [
+  { name: "SUV", image: img1 },
+  { name: "Wagon", image: img2 },
+  { name: "Coupe", image: img3 },
+  { name: "Convertible", image: img4 },
 ];
 
 const CategorySection = () => {
   const carousel = useCarousel({ gap: 16 });
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    apiRequest("/api/cars/facets", { signal: controller.signal })
+      .then(async ({ bodyTypes = [] }) => {
+        const availableCategories = categoryImages.filter(({ name }) => bodyTypes.includes(name));
+        const counted = await Promise.all(availableCategories.map(async (category) => {
+          const result = await apiRequest(`/api/cars?bodyType=${encodeURIComponent(category.name)}&pageSize=1`, { signal: controller.signal });
+          return { ...category, count: result.total };
+        }));
+        if (!controller.signal.aborted) {
+          setCategories(counted);
+          setError("");
+        }
+      })
+      .catch((requestError) => {
+        if (requestError.name !== "AbortError") setError(requestError.message);
+      });
+    return () => controller.abort();
+  }, []);
 
   return (
     <section
@@ -53,6 +77,7 @@ const CategorySection = () => {
           aria-label="Car categories"
           className={`mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth rounded-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${focusRing}`}
         >
+          {error && <p role="alert" className="text-sm text-red-700">Unable to load category counts: {error}</p>}
           {categories.map(({ name, count, image }, index) => (
             <Reveal
               as="article"

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { focusRing } from "@/shared/styles";
@@ -17,6 +17,14 @@ const VehicleEnquiryForm = ({ car, details }) => {
   const [submitted, setSubmitted] = useState(false);
   const formRef = useRef(null);
   const successRef = useRef(null);
+  useEffect(() => {
+    const handlePrefill = (event) => {
+      setValues((previous) => ({ ...previous, message: event.detail.message }));
+      setSubmitted(false);
+    };
+    window.addEventListener("revex:vehicle-enquiry", handlePrefill);
+    return () => window.removeEventListener("revex:vehicle-enquiry", handlePrefill);
+  }, []);
   const handleChange = (event) => {
     const { name: field, value, type, checked } = event.target;
     setValues((previous) => ({ ...previous, [field]: type === "checkbox" ? checked : value }));
@@ -90,4 +98,3 @@ const VehicleEnquiryForm = ({ car, details }) => {
   );
 };
 export default VehicleEnquiryForm;
-

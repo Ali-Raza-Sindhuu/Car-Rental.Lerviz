@@ -29,14 +29,14 @@ const ResetPasswordPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const nextErrors = {};
-    if (values.password.length < 12 || !/[a-z]/.test(values.password) || !/[A-Z]/.test(values.password) || !/\d/.test(values.password) || !/[^A-Za-z0-9]/.test(values.password))
-      nextErrors.password = "Use 12+ characters with upper and lowercase letters, a number, and a symbol";
+    if (values.password.length < 8 || !/[A-Za-z]/.test(values.password) || !/[0-9]/.test(values.password))
+      nextErrors.password = "Use at least 8 characters with a letter and a number";
     if (values.confirmPassword !== values.password)
       nextErrors.confirmPassword = "Passwords do not match";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) return;
     try {
-      await authRequest('reset-password', { token, newPassword: values.password, confirmPassword: values.confirmPassword });
+      await authRequest('reset-password', { token, password: values.password });
       setIsDone(true);
     } catch (error) {
       setStatus(error.message);
@@ -86,7 +86,7 @@ const ResetPasswordPage = () => {
             id="password"
             name="password"
             label="New password"
-            placeholder="At least 12 characters"
+            placeholder="At least 8 characters, one letter and one number"
             autoComplete="new-password"
             value={values.password}
             onChange={handleChange}

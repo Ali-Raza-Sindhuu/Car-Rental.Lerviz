@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, Mail, User } from "lucide-react";
 import AuthShell from "@/features/account/components/AuthShell";
 import Field from "@/features/account/components/Field";
@@ -8,7 +9,10 @@ import { PasswordMeter } from "@/features/account/components/PasswordMeter";
 import GoogleButton, { OrDivider } from "@/features/account/components/GoogleButton";
 import { PrimaryButton, SecondaryButton } from "@/features/account/components/FormButtons";
 import { emailPattern } from "@/features/account/validation";
-import { authRequest } from "@/features/account/authApi";
+import { authRequest, googleAuthRequest } from "@/features/account/authApi";
+import { setCredentials } from "@/features/account/authSlice";
+import { persistAuth } from "@/features/account/authStorage";
+import { mergeGuestGarageSafely } from "@/features/garage/garageApi";
 
 const bodyTypes = ["SUV", "Sedan", "Coupe", "Convertible", "Wagon", "Electric"];
 const intents = ["Buy", "Rent", "Both"];
@@ -21,6 +25,9 @@ const pillClass = (isActive) =>
   }`;
 
 const SignUpPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [step, setStep] = useState(1);
   const [values, setValues] = useState({
     fullName: "",
@@ -48,8 +55,8 @@ const SignUpPage = () => {
     const nextErrors = {};
     if (values.fullName.trim().length < 2) nextErrors.fullName = "Enter your full name";
     if (!emailPattern.test(values.email)) nextErrors.email = "Enter a valid email address";
-    if (values.password.length < 12 || !/[a-z]/.test(values.password) || !/[A-Z]/.test(values.password) || !/\d/.test(values.password) || !/[^A-Za-z0-9]/.test(values.password))
-      nextErrors.password = "Use 12+ characters with upper and lowercase letters, a number, and a symbol";
+    if (values.password.length < 8 || !/[A-Za-z]/.test(values.password) || !/[0-9]/.test(values.password))
+      nextErrors.password = "Use at least 8 characters with a letter and a number";
     if (values.confirmPassword !== values.password)
       nextErrors.confirmPassword = "Passwords do not match";
     return nextErrors;
@@ -77,14 +84,35 @@ const SignUpPage = () => {
         password: values.password,
         confirmPassword: values.confirmPassword,
       });
-      setStatus(result.message);
+      const token = result.token || result.accessToken;
+      if (!result.user || !token) {
+        throw new Error("The server did not return a user and access token.");
+      }
+      persistAuth(result.user, token);
+      dispatch(setCredentials({ user: result.user, token }));
+      await mergeGuestGarageSafely(token, dispatch);
+      const destination = location.state?.from;
+      navigate(destination?.pathname ? `${destination.pathname}${destination.search || ""}${destination.hash || ""}` : "/", { replace: true });
     } catch (error) {
       setStatus(error.message);
     }
   };
 
-  const handleGoogle = () => {
-    setStatus('Google sign-up requires a configured Google client.');
+  const handleGoogle = async (credential) => {
+    setStatus("");
+    try {
+      const session = await googleAuthRequest(credential);
+      if (!session.user || !session.token) {
+        throw new Error("The server did not return a user and access token.");
+      }
+      persistAuth(session.user, session.token);
+      dispatch(setCredentials({ user: session.user, token: session.token }));
+      await mergeGuestGarageSafely(session.token, dispatch);
+      const destination = location.state?.from;
+      navigate(destination?.pathname ? `${destination.pathname}${destination.search || ""}${destination.hash || ""}` : "/profile", { replace: true });
+    } catch (error) {
+      setStatus(error.message);
+    }
   };
 
   return (
@@ -125,7 +153,11 @@ const SignUpPage = () => {
 
       {step === 1 && (
         <>
-          <GoogleButton label="Sign up with Google" onClick={handleGoogle} />
+          <GoogleButton
+            label="Sign up with Google"
+            onCredential={handleGoogle}
+            onError={setStatus}
+          />
           <OrDivider />
         </>
       )}
@@ -160,7 +192,7 @@ const SignUpPage = () => {
               id="password"
               name="password"
               label="Password"
-              placeholder="At least 12 characters"
+              placeholder="At least 8 characters, one letter and one number"
               autoComplete="new-password"
               value={values.password}
               onChange={handleChange}

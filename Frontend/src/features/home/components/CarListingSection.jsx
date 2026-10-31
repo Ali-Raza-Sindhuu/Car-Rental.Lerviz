@@ -1,26 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Cog, Cylinder, Fuel, Gauge, Heart } from "lucide-react";
-import img1 from "@/assets/product_01.png";
-import img2 from "@/assets/product_02.png";
-import img3 from "@/assets/product_03.png";
-import img4 from "@/assets/product_04.png";
-import img5 from "@/assets/product_05.png";
-import img6 from "@/assets/product_06.png";
+import { ArrowUpRight, Cog, Cylinder, Fuel, Gauge } from "lucide-react";
+import { apiRequest } from "@/lib/api";
+import { mapCar } from "@/features/inventory/data/apiCars";
+import VehicleImage from "@/components/shared/VehicleImage";
 import { Reveal } from "@/shared/motion";
 import SectionHeading from "@/shared/SectionHeading";
 import { focusRing } from "@/shared/styles";
+import FavouriteButton from "@/features/inventory/components/FavouriteButton";
 
 const filterTabs = ["All", "New", "Used"];
-const inventoryIds = {
-  1: "bmw-i8-2022",
-  2: "chevrolet-camaro-ss-2019",
-  3: "chevrolet-camaro-rs-2023",
-  4: "bmw-m2-competition-2022",
-  5: "toyota-hilux-2023",
-  6: "mercedes-e-class-2019",
-};
-
 // Spec order: [engine, power, fuel, transmission]
 const SPEC_META = [
   { label: "Engine", icon: Cylinder },
@@ -29,17 +18,11 @@ const SPEC_META = [
   { label: "Transmission", icon: Cog },
 ];
 
-const cars = [
-  { id: 1, name: "BMW i8 [2022-2023]", condition: "New", price: "$146,000", image: img1, specs: ["1498 cc", "122 bhp", "petrol", "manual"] },
-  { id: 2, name: "Chevrolet Camaro SS [2019-2020]", condition: "Used", listingType: "For rent", price: "$89,900", priceUnit: "/day", image: img2, specs: ["6162 cc", "455 bhp", "petrol", "manual"] },
-  { id: 3, name: "Chevrolet Camaro RS [2022-2024]", condition: "New", price: "$42,500", image: img3, specs: ["3600 cc", "335 bhp", "petrol", "manual"] },
-  { id: 4, name: "BMW M2 Competition [2022-2023]", condition: "New", price: "$58,900", image: img4, specs: ["2993 cc", "122 bhp", "petrol", "manual"] },
-  { id: 5, name: "Toyota Hilux [2023-2024]", condition: "New", price: "$34,200", image: img5, specs: ["1499 cc", "122 bhp", "petrol", "manual"] },
-  { id: 6, name: "Mercedes-Benz E-Class [2019-2020]", condition: "Used", listingType: "For rent", price: "$75,900", priceUnit: "/day", image: img6, specs: ["1498 cc", "122 bhp", "petrol", "manual"] },
-];
-
 const CarCard = ({ car, index }) => {
-  const [isSaved, setIsSaved] = useState(false);
+  const name = `${car.make} ${car.model} [${car.yearRange}]`;
+  const rent = car.listingType === "rent";
+  const price = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: rent ? 2 : 0 }).format(car.price);
+  const specs = [car.cc ? `${car.cc} cc` : "Electric", `${car.bhp} bhp`, car.fuel.toLowerCase(), car.transmission.toLowerCase()];
 
   return (
     <Reveal
@@ -49,56 +32,44 @@ const CarCard = ({ car, index }) => {
       className="group rounded-2xl border border-neutral-200 bg-white p-3 transition-[translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-neutral-900/5"
     >
       <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-neutral-100">
-        <img
+        <VehicleImage
           src={car.image}
-          alt={car.name}
+          alt={name}
           loading="lazy"
           className="size-full object-contain p-4 transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
         <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1.5 text-[11px] font-medium text-neutral-700">
-          {car.condition} Car
+          {car.condition === "new" ? "New Car" : "Used Car"}
         </span>
 
-        {car.listingType && (
+        {rent && (
           <span className="absolute right-3 top-3 rounded-full bg-[#f05a1a]/10 px-3 py-1.5 text-[11px] font-medium text-[#f05a1a]">
-            {car.listingType}
+            For rent
           </span>
         )}
 
-        <button
-          type="button"
-          aria-label={isSaved ? `Remove ${car.name} from saved` : `Save ${car.name}`}
-          aria-pressed={isSaved}
-          onClick={() => setIsSaved((prev) => !prev)}
-          className={`absolute bottom-3 right-3 grid size-9 place-items-center rounded-full bg-white text-neutral-500 shadow-sm transition-colors duration-300 hover:text-[#f05a1a] ${focusRing}`}
-        >
-          <Heart
-            className={`size-4 transition-colors ${
-              isSaved ? "fill-[#f05a1a] text-[#f05a1a]" : ""
-            }`}
-          />
-        </button>
+        <div className="absolute bottom-3 right-3"><FavouriteButton carId={car.id} /></div>
       </div>
 
       <div className="flex items-start justify-between gap-3 px-1 pt-5">
         <div className="min-w-0">
           <p className="text-2xl font-bold leading-none tracking-tight text-[#f05a1a]">
-            {car.price}
-            {car.priceUnit && (
+            {price}
+            {rent && (
               <span className="ml-1 text-[11px] font-medium tracking-normal text-neutral-400">
-                {car.priceUnit}
+                /day
               </span>
             )}
           </p>
           <h3 className="mt-3 text-base font-bold leading-snug tracking-tight text-neutral-950">
-            {car.name}
+            {name}
           </h3>
         </div>
 
         <Link
-          to={`/inventory/${inventoryIds[car.id]}`}
-          aria-label={`View details for ${car.name}`}
+          to={`/inventory/${car.id}`}
+          aria-label={`View details for ${name}`}
           className={`grid size-10 shrink-0 place-items-center rounded-full border border-neutral-200 text-neutral-950 transition-colors duration-300 group-hover:border-[#f05a1a] group-hover:bg-[#f05a1a] group-hover:text-white ${focusRing}`}
         >
           <ArrowUpRight className="size-4" />
@@ -106,7 +77,7 @@ const CarCard = ({ car, index }) => {
       </div>
 
       <ul className="mt-5 grid grid-cols-4 gap-1 border-t border-neutral-200 px-1 pt-4">
-        {car.specs.map((spec, specIndex) => {
+        {specs.map((spec, specIndex) => {
           const { label, icon: Icon } = SPEC_META[specIndex];
           return (
             <li
@@ -131,9 +102,21 @@ const CarCard = ({ car, index }) => {
 
 const CarListingSection = () => {
   const [activeTab, setActiveTab] = useState("All");
+  const [cars, setCars] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    apiRequest("/api/cars?page=1&pageSize=6&sort=newest", { signal: controller.signal })
+      .then(({ items }) => setCars(items.map(mapCar)))
+      .catch((requestError) => {
+        if (requestError.name !== "AbortError") setError(requestError.message);
+      });
+    return () => controller.abort();
+  }, []);
 
   const visibleCars =
-    activeTab === "All" ? cars : cars.filter((car) => car.condition === activeTab);
+    activeTab === "All" ? cars : cars.filter((car) => car.condition === activeTab.toLowerCase());
 
   return (
     <section
@@ -176,6 +159,7 @@ const CarListingSection = () => {
 
         {/* Keyed by tab so the cards animate in again when the filter changes */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+          {error && <p role="alert" className="sm:col-span-2 lg:col-span-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">Unable to load cars: {error}</p>}
           {visibleCars.map((car, index) => (
             <CarCard key={`${activeTab}-${car.id}`} car={car} index={index} />
           ))}

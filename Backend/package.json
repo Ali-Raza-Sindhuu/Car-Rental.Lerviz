@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "db:schema": "node scripts/db-schema.js",
+    "db:seed": "node scripts/seed.js",
+    "images:upload": "node scripts/upload-car-images.js",
+    "db:migrate:google": "node scripts/db-google-migration.js",
+    "db:migrate:email": "node scripts/db-email-migration.js",
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.2",
+    "google-auth-library": "^11.3.2",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6",
+    "zod": "^4.6.7"
+  }
+}

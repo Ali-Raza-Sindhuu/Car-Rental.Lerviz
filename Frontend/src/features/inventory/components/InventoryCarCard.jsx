@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Fuel, Gauge, Settings2, Zap } from "lucide-react";
 import VehicleImage from "@/components/shared/VehicleImage";
+import FavouriteButton from "./FavouriteButton";
 
 // Change this once the car details route exists.
 const getCarHref = (car) => `/inventory/${car.id}`;
@@ -58,6 +59,9 @@ const InventoryCarCard = ({ car, layout = "grid" }) => {
           loading="lazy"
           className="size-full object-contain p-4"
         />
+        <div className="absolute bottom-3 right-3">
+          <FavouriteButton carId={car.id} />
+        </div>
         <span className="absolute left-3 top-3 rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-neutral-900">
           {car.condition === "new" ? "New Car" : "Used Car"}
         </span>

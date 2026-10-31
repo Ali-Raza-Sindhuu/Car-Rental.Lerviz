@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState, useEffect } from "react";
+import { apiRequest } from "@/lib/api";
 import { ArrowLeft, ArrowRight, Car } from "lucide-react";
 import InventoryCarCard from "@/features/inventory/components/InventoryCarCard";
-import { getSimilarCars } from "@/features/inventory/data/carDetails";
+import { mapCar } from "@/features/inventory/data/apiCars";
 import SectionHeading from "@/shared/SectionHeading";
 import { focusRing } from "@/shared/styles";
 
@@ -21,7 +22,26 @@ const SimilarCard = ({ car }) => {
 };
 
 const SimilarVehicles = ({ car }) => {
-  const cars = useMemo(() => getSimilarCars(car, 4), [car]);
+  const [inventory, setInventory] = useState([]);
+  const [loadError, setLoadError] = useState("");
+  useEffect(() => {
+    const controller = new AbortController();
+    apiRequest("/api/cars?page=1&pageSize=100", { signal: controller.signal })
+      .then(({ items }) => {
+        setInventory(items.map(mapCar));
+        setLoadError("");
+      })
+      .catch((error) => {
+        if (!controller.signal.aborted) setLoadError(error.message);
+      });
+    return () => controller.abort();
+  }, []);
+  const cars = useMemo(() => {
+    const rank = (candidate) => candidate.bodyType === car.bodyType ? 0 : candidate.make === car.make ? 1 : 2;
+    return inventory.filter((candidate) => candidate.id !== car.id)
+      .sort((first, second) => rank(first) - rank(second))
+      .slice(0, 4);
+  }, [car, inventory]);
   const trackRef = useRef(null);
   const [position, setPosition] = useState({ previous: false, next: false });
   const update = () => {
@@ -52,6 +72,7 @@ const SimilarVehicles = ({ car }) => {
             <button type="button" aria-label="Previous similar vehicles" disabled={!position.previous} onClick={() => move(-1)} className={`grid size-10 place-items-center rounded-full border border-neutral-200 bg-white text-neutral-900 hover:bg-neutral-100 disabled:opacity-40 ${focusRing}`}><ArrowLeft className="size-4" /></button>
             <button type="button" aria-label="Next similar vehicles" disabled={!position.next} onClick={() => move(1)} className={`grid size-10 place-items-center rounded-full bg-neutral-900 text-white hover:bg-neutral-800 disabled:opacity-40 ${focusRing}`}><ArrowRight className="size-4" /></button>
           </div>
+          {loadError && <p role="alert" className="mt-6 text-sm text-red-700">Unable to load similar vehicles: {loadError}</p>}
         </div>
         <ul ref={trackRef} tabIndex={0} aria-label="Similar vehicles. Use left and right arrow keys to browse." onScroll={update} onKeyDown={(event) => {
           if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
@@ -66,4 +87,3 @@ const SimilarVehicles = ({ car }) => {
   );
 };
 export default SimilarVehicles;
-

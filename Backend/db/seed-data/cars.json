@@ -1,0 +1,1629 @@
+{
+  "cars": [
+    {
+      "id": "bmw-i8-2022",
+      "make": "BMW",
+      "model": "i8",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 145000,
+      "body_type": "Coupe",
+      "fuel": "Hybrid",
+      "transmission": "Automatic",
+      "cc": 1499,
+      "bhp": 369,
+      "mileage": 0,
+      "colour": "Orange",
+      "image_file": "bmw-i8.png",
+      "details": {
+        "description": "A sculpted hybrid coupe with a low driving position and a distinctive sense of occasion. Its compact petrol engine and electric assistance make this an engaging choice for weekend escapes.",
+        "specs": {
+          "torque": 570,
+          "zeroToHundred": 4.4,
+          "topSpeed": 250,
+          "drivetrain": "All-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Ivory",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000001"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Head-up display",
+        "Hybrid drive modes"
+      ],
+      "gallery_files": [
+        "bmw-i8.png"
+      ]
+    },
+    {
+      "id": "chevrolet-camaro-ss-2019",
+      "make": "Chevrolet",
+      "model": "Camaro SS",
+      "year_range": "2019-2020",
+      "year": 2020,
+      "condition": "used",
+      "listing_type": "rent",
+      "price": 89.99,
+      "body_type": "Coupe",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 6162,
+      "bhp": 455,
+      "mileage": 42000,
+      "colour": "Red",
+      "image_file": "camaro-ss.png",
+      "details": {
+        "description": "A muscular coupe with a generous V8 soundtrack and a purposeful cabin. This rental suits a memorable road trip with room for a light weekend bag.",
+        "specs": {
+          "torque": 617,
+          "zeroToHundred": 4.3,
+          "topSpeed": 250,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000002"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Sport exhaust",
+        "Paddle shifters"
+      ],
+      "gallery_files": [
+        "camaro-ss.png",
+        "product_02.png"
+      ]
+    },
+    {
+      "id": "chevrolet-camaro-rs-2023",
+      "make": "Chevrolet",
+      "model": "Camaro RS",
+      "year_range": "2023-2024",
+      "year": 2024,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 42500,
+      "body_type": "Coupe",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 3600,
+      "bhp": 335,
+      "mileage": 0,
+      "colour": "Yellow",
+      "image_file": "camaro-rs.png",
+      "details": {
+        "description": "A bright coupe that balances everyday comfort with an expressive silhouette. The automatic gearbox keeps the drive relaxed while the V6 adds character.",
+        "specs": {
+          "torque": 385,
+          "zeroToHundred": 5.1,
+          "topSpeed": 250,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000003"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Drive mode selector",
+        "Sport seats"
+      ],
+      "gallery_files": [
+        "camaro-rs.png",
+        "product_03.png"
+      ]
+    },
+    {
+      "id": "bmw-m2-competition-2022",
+      "make": "BMW",
+      "model": "M2 Competition",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 58900,
+      "body_type": "Coupe",
+      "fuel": "Petrol",
+      "transmission": "Manual",
+      "cc": 2993,
+      "bhp": 405,
+      "mileage": 0,
+      "colour": "Blue",
+      "image_file": "bmw-m2.png",
+      "details": {
+        "description": "Compact proportions and a manual gearbox put the driver at the centre of the experience. A focused coupe for those who enjoy taking the longer route home.",
+        "specs": {
+          "torque": 550,
+          "zeroToHundred": 4.4,
+          "topSpeed": 250,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000004"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Limited-slip differential",
+        "Sport seats"
+      ],
+      "gallery_files": [
+        "bmw-m2.png",
+        "product_04.png"
+      ]
+    },
+    {
+      "id": "toyota-hilux-2023",
+      "make": "Toyota",
+      "model": "Hilux",
+      "year_range": "2023-2024",
+      "year": 2024,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 34200,
+      "body_type": "Pickup",
+      "fuel": "Diesel",
+      "transmission": "Manual",
+      "cc": 2755,
+      "bhp": 201,
+      "mileage": 0,
+      "colour": "White",
+      "image_file": "toyata-hilux.png",
+      "details": {
+        "description": "A double-cab pickup with practical space for work and weekends. Diesel torque and four-wheel drive give this sample specification an adaptable character.",
+        "specs": {
+          "torque": 500,
+          "zeroToHundred": 10.7,
+          "topSpeed": 175,
+          "drivetrain": "Four-wheel drive",
+          "doors": 4,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000005"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Selectable four-wheel drive",
+        "Tow preparation"
+      ],
+      "gallery_files": [
+        "toyata-hilux.png",
+        "product_05.png"
+      ]
+    },
+    {
+      "id": "mercedes-e-class-2019",
+      "make": "Mercedes-Benz",
+      "model": "E-Class",
+      "year_range": "2019-2020",
+      "year": 2020,
+      "condition": "used",
+      "listing_type": "rent",
+      "price": 75.99,
+      "body_type": "Sedan",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 1991,
+      "bhp": 194,
+      "mileage": 58000,
+      "colour": "Black",
+      "image_file": "mercedes-e-class.png",
+      "details": {
+        "description": "A refined sedan with space to settle into a longer journey. Its automatic transmission and calm cabin make it a natural choice for business travel or a comfortable break.",
+        "specs": {
+          "torque": 320,
+          "zeroToHundred": 7.5,
+          "topSpeed": 240,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 4,
+          "seats": 5,
+          "interiorColour": "Beige",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000006"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Heated front seats",
+        "Ambient lighting"
+      ],
+      "gallery_files": [
+        "mercedes-e-class.png",
+        "product_06.png"
+      ]
+    },
+    {
+      "id": "porsche-911-carrera-2022",
+      "make": "Porsche",
+      "model": "911 Carrera",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 112000,
+      "body_type": "Coupe",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 2981,
+      "bhp": 379,
+      "mileage": 18000,
+      "colour": "Grey",
+      "image_file": "porsche-911.png",
+      "details": {
+        "description": "An enduring sports-car shape with a low seating position and a rear-mounted engine. This used example offers a distinctive balance of everyday usability and weekend character.",
+        "specs": {
+          "torque": 450,
+          "zeroToHundred": 4.2,
+          "topSpeed": 293,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000007"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Sport drive modes",
+        "Power-adjustable seats"
+      ],
+      "gallery_files": [
+        "porsche-911.png"
+      ]
+    },
+    {
+      "id": "toyota-land-cruiser-2021",
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "year_range": "2021-2022",
+      "year": 2022,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 68500,
+      "body_type": "SUV",
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "cc": 3346,
+      "bhp": 304,
+      "mileage": 36000,
+      "colour": "White",
+      "image_file": "land-cruiser.png",
+      "details": {
+        "description": "A substantial SUV with generous passenger space and a composed long-distance character. Its diesel engine and four-wheel-drive layout suit journeys beyond the city.",
+        "specs": {
+          "torque": 700,
+          "zeroToHundred": 6.9,
+          "topSpeed": 210,
+          "drivetrain": "Four-wheel drive",
+          "doors": 5,
+          "seats": 7,
+          "interiorColour": "Beige",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000008"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Low-range gearing",
+        "Third-row seating"
+      ],
+      "gallery_files": [
+        "land-cruiser.png"
+      ]
+    },
+    {
+      "id": "land-rover-defender-90-2022",
+      "make": "Land Rover",
+      "model": "Defender 90",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "new",
+      "listing_type": "rent",
+      "price": 139,
+      "body_type": "SUV",
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "cc": 1999,
+      "bhp": 197,
+      "mileage": 0,
+      "colour": "Grey",
+      "image_file": "defender-90.png",
+      "details": {
+        "description": "A short-wheelbase SUV with upright visibility and a confident stance. This rental is an interesting companion for a scenic break with a compact group.",
+        "specs": {
+          "torque": 430,
+          "zeroToHundred": 10.2,
+          "topSpeed": 175,
+          "drivetrain": "Four-wheel drive",
+          "doors": 3,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000009"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Terrain modes",
+        "Surround-view camera"
+      ],
+      "gallery_files": [
+        "defender-90.png"
+      ]
+    },
+    {
+      "id": "tesla-model-3-2023",
+      "make": "Tesla",
+      "model": "Model 3",
+      "year_range": "2023-2024",
+      "year": 2024,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 41900,
+      "body_type": "Sedan",
+      "fuel": "Electric",
+      "transmission": "Automatic",
+      "cc": 0,
+      "bhp": 283,
+      "mileage": 0,
+      "colour": "White",
+      "image_file": "tesla-model-3.png",
+      "details": {
+        "description": "A clean-lined electric sedan with a quiet cabin and a simple central interface. Smooth power delivery makes the everyday commute feel effortless.",
+        "specs": {
+          "torque": 420,
+          "zeroToHundred": 6.1,
+          "topSpeed": 201,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 4,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000010"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Navigation",
+        "Heated front seats"
+      ],
+      "gallery_files": [
+        "tesla-model-3.png"
+      ]
+    },
+    {
+      "id": "audi-a4-avant-2020",
+      "make": "Audi",
+      "model": "A4 Avant",
+      "year_range": "2020-2021",
+      "year": 2021,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 29800,
+      "body_type": "Wagon",
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "cc": 1968,
+      "bhp": 187,
+      "mileage": 64000,
+      "colour": "Silver",
+      "image_file": "mercedes-e-class.png",
+      "details": {
+        "description": "An understated wagon with useful luggage space and a relaxed automatic transmission. A practical used choice for long trips and busy family days.",
+        "specs": {
+          "torque": 400,
+          "zeroToHundred": 7.9,
+          "topSpeed": 235,
+          "drivetrain": "Front-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000011"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Powered tailgate",
+        "Roof rails"
+      ],
+      "gallery_files": [
+        "mercedes-e-class.png"
+      ]
+    },
+    {
+      "id": "honda-civic-2021",
+      "make": "Honda",
+      "model": "Civic",
+      "year_range": "2021-2022",
+      "year": 2022,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 21900,
+      "body_type": "Hatchback",
+      "fuel": "Petrol",
+      "transmission": "Manual",
+      "cc": 1498,
+      "bhp": 180,
+      "mileage": 41000,
+      "colour": "Blue",
+      "image_file": "bmw-x5.png",
+      "details": {
+        "description": "An approachable hatchback that combines a manual gearbox with useful everyday space. Its compact footprint and responsive petrol engine suit varied routines.",
+        "specs": {
+          "torque": 240,
+          "zeroToHundred": 8.2,
+          "topSpeed": 220,
+          "drivetrain": "Front-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000012"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Rear parking camera",
+        "Lane departure warning"
+      ],
+      "gallery_files": [
+        "bmw-x5.png"
+      ]
+    },
+    {
+      "id": "ford-mustang-gt-convertible-2020",
+      "make": "Ford",
+      "model": "Mustang GT Convertible",
+      "year_range": "2020-2021",
+      "year": 2021,
+      "condition": "used",
+      "listing_type": "rent",
+      "price": 99,
+      "body_type": "Convertible",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 4951,
+      "bhp": 450,
+      "mileage": 27000,
+      "colour": "Red",
+      "image_file": "product_01.png",
+      "details": {
+        "description": "An open-top V8 with a relaxed touring spirit and a bold silhouette. A rental made for taking in the scenery at your own pace.",
+        "specs": {
+          "torque": 529,
+          "zeroToHundred": 4.8,
+          "topSpeed": 250,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000013"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Power folding roof",
+        "Heated front seats"
+      ],
+      "gallery_files": [
+        "product_01.png"
+      ]
+    },
+    {
+      "id": "volkswagen-golf-gti-2022",
+      "make": "Volkswagen",
+      "model": "Golf GTI",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 38700,
+      "body_type": "Hatchback",
+      "fuel": "Petrol",
+      "transmission": "Manual",
+      "cc": 1984,
+      "bhp": 241,
+      "mileage": 0,
+      "colour": "Grey",
+      "image_file": "bmw-x5.png",
+      "details": {
+        "description": "A familiar hatchback with a more purposeful edge. The manual gearbox and practical cabin make this sample car an appealing all-rounder.",
+        "specs": {
+          "torque": 370,
+          "zeroToHundred": 6.4,
+          "topSpeed": 250,
+          "drivetrain": "Front-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000014"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Sport seats",
+        "Limited-slip differential"
+      ],
+      "gallery_files": [
+        "bmw-x5.png"
+      ]
+    },
+    {
+      "id": "bmw-x5-2021",
+      "make": "BMW",
+      "model": "X5",
+      "year_range": "2021-2022",
+      "year": 2022,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 64900,
+      "body_type": "SUV",
+      "fuel": "Hybrid",
+      "transmission": "Automatic",
+      "cc": 2998,
+      "bhp": 389,
+      "mileage": 31000,
+      "colour": "Black",
+      "image_file": "bmw-x5.png",
+      "details": {
+        "description": "A spacious hybrid SUV with a comfortable driving position and a versatile cabin. This used example brings quiet urban running and long-distance flexibility together.",
+        "specs": {
+          "torque": 600,
+          "zeroToHundred": 5.6,
+          "topSpeed": 235,
+          "drivetrain": "All-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Brown",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000015"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Panoramic roof",
+        "Powered tailgate"
+      ],
+      "gallery_files": [
+        "bmw-x5.png"
+      ]
+    },
+    {
+      "id": "mazda-mx-5-2022",
+      "make": "Mazda",
+      "model": "MX-5",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 33400,
+      "body_type": "Convertible",
+      "fuel": "Petrol",
+      "transmission": "Manual",
+      "cc": 1998,
+      "bhp": 181,
+      "mileage": 0,
+      "colour": "Red",
+      "image_file": "product_01.png",
+      "details": {
+        "description": "A light two-seat roadster built around the simple pleasure of driving. A manual gearbox and compact proportions make even a short journey feel special.",
+        "specs": {
+          "torque": 205,
+          "zeroToHundred": 6.5,
+          "topSpeed": 219,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 2,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000016"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Folding soft top",
+        "Limited-slip differential"
+      ],
+      "gallery_files": [
+        "product_01.png"
+      ]
+    },
+    {
+      "id": "ferrari-roma-2021",
+      "make": "Ferrari",
+      "model": "Roma",
+      "year_range": "2021-2022",
+      "year": 2022,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 229000,
+      "body_type": "Coupe",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 3855,
+      "bhp": 612,
+      "mileage": 9000,
+      "colour": "Red",
+      "image_file": "porsche-911.png",
+      "details": {
+        "description": "A front-engined grand touring coupe with a twin-turbo V8 and a carefully finished cabin. This sample listing pairs striking performance with room for a weekend away.",
+        "specs": {
+          "torque": 760,
+          "zeroToHundred": 3.4,
+          "topSpeed": 320,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Tan",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000017"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Manettino drive modes",
+        "Adaptive suspension"
+      ],
+      "gallery_files": [
+        "porsche-911.png"
+      ]
+    },
+    {
+      "id": "nissan-gt-r-2020",
+      "make": "Nissan",
+      "model": "GT-R",
+      "year_range": "2020-2021",
+      "year": 2021,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 98500,
+      "body_type": "Coupe",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 3799,
+      "bhp": 565,
+      "mileage": 22000,
+      "colour": "Silver",
+      "image_file": "porsche-911.png",
+      "details": {
+        "description": "A high-performance coupe with all-wheel-drive traction and a cockpit designed around the driver. This used sample offers a focused sports-car experience.",
+        "specs": {
+          "torque": 633,
+          "zeroToHundred": 2.9,
+          "topSpeed": 315,
+          "drivetrain": "All-wheel drive",
+          "doors": 2,
+          "seats": 4,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Riverside",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Fri 8:30–18:00, Sat 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000018"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Launch control",
+        "Brembo performance brakes"
+      ],
+      "gallery_files": [
+        "porsche-911.png"
+      ]
+    },
+    {
+      "id": "hyundai-ioniq-5-2023",
+      "make": "Hyundai",
+      "model": "Ioniq 5",
+      "year_range": "2023-2024",
+      "year": 2024,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 47500,
+      "body_type": "SUV",
+      "fuel": "Electric",
+      "transmission": "Automatic",
+      "cc": 0,
+      "bhp": 320,
+      "mileage": 0,
+      "colour": "White",
+      "image_file": "bmw-x5.png",
+      "details": {
+        "description": "A spacious electric crossover with a flat floor, a quiet cabin and quick charging capability. This new sample vehicle is suited to everyday journeys and longer drives.",
+        "specs": {
+          "torque": 605,
+          "zeroToHundred": 5.2,
+          "topSpeed": 185,
+          "drivetrain": "All-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Charcoal",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Airport Park",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Daily 7:00–22:00 (rentals)"
+        },
+        "vin": "SAMPLE-VIN-000019"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Regenerative braking",
+        "Vehicle-to-load power"
+      ],
+      "gallery_files": [
+        "bmw-x5.png"
+      ]
+    },
+    {
+      "id": "kia-sportage-2022",
+      "make": "Kia",
+      "model": "Sportage",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 26900,
+      "body_type": "SUV",
+      "fuel": "Hybrid",
+      "transmission": "Automatic",
+      "cc": 1598,
+      "bhp": 227,
+      "mileage": 39000,
+      "colour": "Grey",
+      "image_file": "bmw-x5.png",
+      "details": {
+        "description": "A practical hybrid SUV with a comfortable driving position, useful cargo space and a flexible cabin. Its sample equipment makes it a well-rounded choice for family trips.",
+        "specs": {
+          "torque": 350,
+          "zeroToHundred": 8,
+          "topSpeed": 193,
+          "drivetrain": "All-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000020"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Smart cruise control",
+        "Heated front seats"
+      ],
+      "gallery_files": [
+        "bmw-x5.png"
+      ]
+    },
+    {
+      "id": "toyota-corolla-2021",
+      "make": "Toyota",
+      "model": "Corolla",
+      "year_range": "2021-2022",
+      "year": 2022,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 18400,
+      "body_type": "Sedan",
+      "fuel": "Hybrid",
+      "transmission": "Automatic",
+      "cc": 1798,
+      "bhp": 122,
+      "mileage": 52000,
+      "colour": "White",
+      "image_file": "mercedes-e-class.png",
+      "details": {
+        "description": "A dependable hybrid sedan with a quiet cabin and straightforward controls. This sample listing offers a comfortable, efficient option for commuting and city errands.",
+        "specs": {
+          "torque": 142,
+          "zeroToHundred": 10.9,
+          "topSpeed": 180,
+          "drivetrain": "Front-wheel drive",
+          "doors": 4,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Riverside",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Fri 8:30–18:00, Sat 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000021"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Adaptive cruise control",
+        "Lane-tracing assist"
+      ],
+      "gallery_files": [
+        "mercedes-e-class.png"
+      ]
+    },
+    {
+      "id": "mercedes-g-class-2022",
+      "make": "Mercedes-Benz",
+      "model": "G-Class",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "used",
+      "listing_type": "rent",
+      "price": 249,
+      "body_type": "SUV",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 3982,
+      "bhp": 577,
+      "mileage": 14000,
+      "colour": "Black",
+      "image_file": "land-cruiser.png",
+      "details": {
+        "description": "A distinctive luxury SUV with a commanding view of the road, a premium cabin and serious off-road hardware. This rental sample combines presence with modern comfort.",
+        "specs": {
+          "torque": 850,
+          "zeroToHundred": 4.5,
+          "topSpeed": 220,
+          "drivetrain": "All-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Airport Park",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Daily 7:00–22:00 (rentals)"
+        },
+        "vin": "SAMPLE-VIN-000022"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Three locking differentials",
+        "Adaptive damping"
+      ],
+      "gallery_files": [
+        "land-cruiser.png"
+      ]
+    },
+    {
+      "id": "audi-rs6-avant-2021",
+      "make": "Audi",
+      "model": "RS6 Avant",
+      "year_range": "2021-2022",
+      "year": 2022,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 119000,
+      "body_type": "Wagon",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 3996,
+      "bhp": 591,
+      "mileage": 28000,
+      "colour": "Grey",
+      "image_file": "mercedes-e-class.png",
+      "details": {
+        "description": "A performance wagon that pairs a twin-turbo V8 with generous luggage space and a refined cabin. This sample RS6 Avant is equally at home on a long trip or a quiet commute.",
+        "specs": {
+          "torque": 800,
+          "zeroToHundred": 3.6,
+          "topSpeed": 280,
+          "drivetrain": "All-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000023"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Adaptive air suspension",
+        "Sport differential"
+      ],
+      "gallery_files": [
+        "mercedes-e-class.png"
+      ]
+    },
+    {
+      "id": "volvo-v60-2020",
+      "make": "Volvo",
+      "model": "V60",
+      "year_range": "2020-2021",
+      "year": 2021,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 27800,
+      "body_type": "Wagon",
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "cc": 1969,
+      "bhp": 187,
+      "mileage": 71000,
+      "colour": "Blue",
+      "image_file": "mercedes-e-class.png",
+      "details": {
+        "description": "A restrained estate car with supportive seats, balanced road manners and room for everyday gear. This diesel sample is suited to relaxed, longer-distance driving.",
+        "specs": {
+          "torque": 400,
+          "zeroToHundred": 7.9,
+          "topSpeed": 220,
+          "drivetrain": "All-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Charcoal",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Riverside",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Fri 8:30–18:00, Sat 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000024"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Pilot Assist",
+        "Powered tailgate"
+      ],
+      "gallery_files": [
+        "mercedes-e-class.png"
+      ]
+    },
+    {
+      "id": "ford-f-150-raptor-2022",
+      "make": "Ford",
+      "model": "F-150 Raptor",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 79900,
+      "body_type": "Pickup",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 3456,
+      "bhp": 450,
+      "mileage": 0,
+      "colour": "Black",
+      "image_file": "toyata-hilux.png",
+      "details": {
+        "description": "A wide-track pickup with long-travel suspension, a spacious double cab and ample utility. This new sample vehicle is built for demanding roads and outdoor weekends.",
+        "specs": {
+          "torque": 691,
+          "zeroToHundred": 5.5,
+          "topSpeed": 180,
+          "drivetrain": "Four-wheel drive",
+          "doors": 4,
+          "seats": 5,
+          "interiorColour": "Black",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000025"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Selectable terrain modes",
+        "Off-road suspension"
+      ],
+      "gallery_files": [
+        "toyata-hilux.png"
+      ]
+    },
+    {
+      "id": "mazda-mx-5-rf-2021",
+      "make": "Mazda",
+      "model": "MX-5 RF",
+      "year_range": "2021-2022",
+      "year": 2022,
+      "condition": "used",
+      "listing_type": "rent",
+      "price": 59.5,
+      "body_type": "Convertible",
+      "fuel": "Petrol",
+      "transmission": "Manual",
+      "cc": 1998,
+      "bhp": 181,
+      "mileage": 33000,
+      "colour": "Red",
+      "image_file": "product_01.png",
+      "details": {
+        "description": "A compact roadster with a retractable hardtop, direct steering and an engaging manual gearbox. This rental sample is a natural fit for a scenic drive.",
+        "specs": {
+          "torque": 205,
+          "zeroToHundred": 6.8,
+          "topSpeed": 215,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 2,
+          "interiorColour": "Black",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Airport Park",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Daily 7:00–22:00 (rentals)"
+        },
+        "vin": "SAMPLE-VIN-000026"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Retractable hardtop",
+        "Limited-slip differential"
+      ],
+      "gallery_files": [
+        "product_01.png"
+      ]
+    },
+    {
+      "id": "bmw-z4-m40i-2022",
+      "make": "BMW",
+      "model": "Z4 M40i",
+      "year_range": "2022-2023",
+      "year": 2023,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 66500,
+      "body_type": "Convertible",
+      "fuel": "Petrol",
+      "transmission": "Automatic",
+      "cc": 2998,
+      "bhp": 382,
+      "mileage": 0,
+      "colour": "Blue",
+      "image_file": "product_01.png",
+      "details": {
+        "description": "A two-seat convertible with a turbocharged six-cylinder engine and a power-operated soft top. This new sample balances open-air touring with confident performance.",
+        "specs": {
+          "torque": 500,
+          "zeroToHundred": 4.5,
+          "topSpeed": 250,
+          "drivetrain": "Rear-wheel drive",
+          "doors": 2,
+          "seats": 2,
+          "interiorColour": "Magma Red",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000027"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Adaptive M suspension",
+        "Power soft top"
+      ],
+      "gallery_files": [
+        "product_01.png"
+      ]
+    },
+    {
+      "id": "volkswagen-polo-2019",
+      "make": "Volkswagen",
+      "model": "Polo",
+      "year_range": "2019-2020",
+      "year": 2020,
+      "condition": "used",
+      "listing_type": "buy",
+      "price": 12900,
+      "body_type": "Hatchback",
+      "fuel": "Petrol",
+      "transmission": "Manual",
+      "cc": 999,
+      "bhp": 93,
+      "mileage": 98000,
+      "colour": "Silver",
+      "image_file": "bmw-x5.png",
+      "details": {
+        "description": "A compact hatchback with easy-to-use controls, a practical boot and a manual gearbox. This used sample is an approachable companion for urban driving.",
+        "specs": {
+          "torque": 175,
+          "zeroToHundred": 10.8,
+          "topSpeed": 187,
+          "drivetrain": "Front-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Grey",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Riverside",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Fri 8:30–18:00, Sat 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000028"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Front assist",
+        "Rear parking sensors"
+      ],
+      "gallery_files": [
+        "bmw-x5.png"
+      ]
+    },
+    {
+      "id": "porsche-taycan-2023",
+      "make": "Porsche",
+      "model": "Taycan",
+      "year_range": "2023-2024",
+      "year": 2024,
+      "condition": "new",
+      "listing_type": "buy",
+      "price": 105000,
+      "body_type": "Sedan",
+      "fuel": "Electric",
+      "transmission": "Automatic",
+      "cc": 0,
+      "bhp": 469,
+      "mileage": 0,
+      "colour": "Grey",
+      "image_file": "tesla-model-3.png",
+      "details": {
+        "description": "An electric sports sedan with immediate acceleration, composed handling and a carefully appointed interior. This new sample is designed for quiet daily use and confident longer journeys.",
+        "specs": {
+          "torque": 650,
+          "zeroToHundred": 4.8,
+          "topSpeed": 230,
+          "drivetrain": "All-wheel drive",
+          "doors": 4,
+          "seats": 4,
+          "interiorColour": "Slate Grey",
+          "ownershipHistory": "Unregistered sample vehicle",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Downtown",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Mon–Sat 9:00–19:00, Sun 10:00–16:00"
+        },
+        "vin": "SAMPLE-VIN-000029"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Adaptive air suspension",
+        "Regenerative braking"
+      ],
+      "gallery_files": [
+        "tesla-model-3.png"
+      ]
+    },
+    {
+      "id": "range-rover-sport-2020",
+      "make": "Land Rover",
+      "model": "Range Rover Sport",
+      "year_range": "2020-2021",
+      "year": 2021,
+      "condition": "used",
+      "listing_type": "rent",
+      "price": 179,
+      "body_type": "SUV",
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "cc": 2996,
+      "bhp": 346,
+      "mileage": 61000,
+      "colour": "Black",
+      "image_file": "range-rover.png",
+      "details": {
+        "description": "A refined diesel SUV with a raised driving position, supportive seats and versatile cargo room. This rental sample is suited to comfortable touring and varied road conditions.",
+        "specs": {
+          "torque": 700,
+          "zeroToHundred": 6.9,
+          "topSpeed": 209,
+          "drivetrain": "All-wheel drive",
+          "doors": 5,
+          "seats": 5,
+          "interiorColour": "Ebony",
+          "ownershipHistory": "Two previous keepers; sample history, documents to be verified",
+          "warranty": "Sample 12-month cover; eligibility and terms unconfirmed"
+        },
+        "dealer": {
+          "name": "REVEX Airport Park",
+          "city": "Example City",
+          "phone": "+1 202 555 0142",
+          "hours": "Daily 7:00–22:00 (rentals)"
+        },
+        "vin": "SAMPLE-VIN-000030"
+      },
+      "features": [
+        "Climate control",
+        "Bluetooth audio",
+        "USB connectivity",
+        "Cruise control",
+        "Alloy wheels",
+        "Parking sensors",
+        "Electronic stability control",
+        "Tyre pressure monitoring",
+        "Terrain response",
+        "Electronic air suspension"
+      ],
+      "gallery_files": [
+        "range-rover.png"
+      ]
+    }
+  ]
+}

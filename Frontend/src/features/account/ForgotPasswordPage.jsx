@@ -28,7 +28,7 @@ const ForgotPasswordPage = () => {
     try {
       await authRequest('forgot-password', { email });
       setIsSent(true);
-      setStatus('Reset link requested.');
+      setStatus("If an account exists for that email, we've sent a link.");
     } catch (requestError) {
       setStatus(requestError.message);
     }
@@ -52,7 +52,7 @@ const ForgotPasswordPage = () => {
       title={isSent ? "Check your inbox" : "Forgot your password?"}
       subtitle={
         isSent
-          ? `If an account exists for ${email}, a reset link is on its way. It expires in 30 minutes.`
+          ? "If an account exists for that email, we've sent a link."
           : "Enter the email you signed up with and we'll send you a reset link."
       }
       footer={<BackToLogin />}
